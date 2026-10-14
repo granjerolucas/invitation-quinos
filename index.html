@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#e8f3f9">
-  <meta name="description" content="Una invitación de quince años entre rosas azules, plata y un poco de magia.">
+  <meta name="theme-color" content="#f7cac9">
+  <meta name="description" content="Una invitación de quince años en rosa cuarzo, plata y un poco de magia.">
   <title>Mis XV Años · Antonella Luana</title>
   <link rel="stylesheet" href="./blue-silver-assets/fonts.css">
   <link rel="preload" href="./blue-silver-assets/envelope.webp" as="image">
@@ -12,13 +12,22 @@
   <style>
     :root {
       color-scheme: light;
-      --ice: #e8f3f9;
-      --paper: #fafdff;
-      --blue: #3e7494;
-      --ink: #29475c;
-      --muted: #526c7c;
-      --silver: #acbac5;
-      --line: #c0d1db;
+      --primary: #f7cac9;
+      --primary-soft: #fff0f2;
+      --primary-deep: #6f4055;
+      --accent: #805367;
+      --accent-soft: #a16f83;
+      --paper: #fffafb;
+      --surface-alt: #f9e4e8;
+      --ink: #503944;
+      --muted: #735a65;
+      --pearl: #b8abb5;
+      --line: #e5c5ce;
+      --control-border: #ad7e91;
+      --block-radius: 22px;
+      --section-space: clamp(64px, 8vh, 88px);
+      --shadow-card: 0 10px 26px rgba(80, 57, 68, 0.07);
+      --art-tint: sepia(1) saturate(.65) hue-rotate(295deg);
       --script: "Great Vibes", "Segoe Script", cursive;
       --display: "Cormorant Garamond", Georgia, serif;
       --body: "Lora", Georgia, serif;
@@ -26,14 +35,14 @@
       /* Responsive container tokens */
       --container-max-w: 480px;
       --container-pad-x: 24px;
-      --shadow-ambient: 0 18px 80px rgba(70, 101, 128, 0.16);
+      --shadow-ambient: 0 18px 80px rgba(80, 57, 68, 0.14);
     }
 
     @media (min-width: 640px) {
       :root {
         --container-max-w: 580px;
         --container-pad-x: 36px;
-        --shadow-ambient: 0 24px 80px rgba(41, 71, 92, 0.22), 0 4px 24px rgba(62, 116, 148, 0.08);
+        --shadow-ambient: 0 24px 80px rgba(80, 57, 68, 0.22), 0 4px 24px rgba(80, 57, 68, 0.08);
       }
     }
 
@@ -41,7 +50,7 @@
       :root {
         --container-max-w: 640px;
         --container-pad-x: 44px;
-        --shadow-ambient: 0 30px 90px rgba(41, 71, 92, 0.25), 0 6px 30px rgba(62, 116, 148, 0.1);
+        --shadow-ambient: 0 30px 90px rgba(80, 57, 68, 0.25), 0 6px 30px rgba(80, 57, 68, 0.1);
       }
     }
 
@@ -49,12 +58,12 @@
     [hidden] { display: none !important; }
     html {
       scroll-behavior: smooth;
-      scrollbar-color: var(--silver) var(--ice);
+      scrollbar-color: var(--pearl) var(--primary-soft);
       overflow-x: hidden;
     }
     body {
       margin: 0;
-      background: radial-gradient(circle at 50% 20%, #eef6fa, #dceaf2 60%, #cfe0ea 100%);
+      background: radial-gradient(circle at 50% 20%, var(--paper), var(--surface-alt) 60%, #edc9d4 100%);
       background-attachment: fixed;
       color: var(--ink);
       font-family: var(--body);
@@ -64,13 +73,13 @@
       overflow-x: hidden;
     }
     body.sealed { overflow: hidden; }
-    ::selection { background: #c3dfed; color: #193e58; }
+    ::selection { background: var(--primary); color: var(--primary-deep); }
     button, input, select { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
     button { color: inherit; }
     button, a, input, select { touch-action: manipulation; }
-    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
-      outline: 3px solid var(--blue);
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--accent);
       outline-offset: 4px;
     }
     img { display: block; max-width: 100%; height: auto; }
@@ -92,7 +101,7 @@
 
     @media (min-width: 640px) {
       .invitation, .cover {
-        border-inline: 1px solid rgba(192, 209, 219, 0.45);
+        border-inline: 1px solid rgba(229, 197, 206, 0.65);
       }
     }
 
@@ -104,9 +113,9 @@
       margin: 0 auto;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 75% 25%, #b7dced80, transparent 55%),
-        radial-gradient(ellipse at 5% 65%, #d0e9f5, transparent 70%),
-        linear-gradient(155deg, #f8fcff, #dceff8 55%, #f5fbff);
+        radial-gradient(ellipse at 75% 25%, #f7cac980, transparent 55%),
+        radial-gradient(ellipse at 5% 65%, var(--surface-alt), transparent 70%),
+        linear-gradient(155deg, var(--paper), var(--primary-soft) 55%, var(--paper));
       isolation: isolate;
       box-shadow: var(--shadow-ambient);
       transition: opacity .75s ease, filter .75s ease, max-width .3s ease;
@@ -121,7 +130,7 @@
       justify-content: center;
       padding: clamp(28px, 5.5svh, 54px) clamp(16px, 5vw, 32px);
     }
-    .roses { position: absolute; pointer-events: none; user-select: none; }
+    .roses { position: absolute; pointer-events: none; user-select: none; filter: var(--art-tint); }
     .cover .roses.top {
       width: clamp(200px, 45vw, 290px);
       top: -40px;
@@ -176,11 +185,12 @@
       cursor: pointer;
       perspective: 900px;
       position: relative;
-      filter: drop-shadow(0 14px 15px #31587520);
+      filter: drop-shadow(0 14px 15px #70495720);
       transition: transform .3s ease;
     }
     .envelope-button:hover { transform: translateY(-4px); }
     .envelope-image { position: relative; width: 100%; z-index: 1; }
+    .envelope-image, .envelope-front, .envelope-flap { filter: var(--art-tint); }
     .envelope-front, .envelope-flap {
       position: absolute;
       inset: 0;
@@ -201,8 +211,8 @@
       inset: 28% 15% 20%;
       display: grid;
       place-items: center;
-      border: 1px solid var(--silver);
-      background: #fcfdff;
+      border: 1px solid var(--pearl);
+      background: var(--paper);
       font: clamp(22px, 3.8vw, 28px)/1.2 var(--script);
       opacity: 0;
       transition: transform .75s .15s ease, opacity .35s ease;
@@ -230,9 +240,9 @@
       gap: 12px;
       width: min(158px, 60vw);
       margin: clamp(10px, 1.8svh, 16px) auto 0;
-      color: #7296ad;
+      color: var(--accent-soft);
     }
-    .cover-divider::before, .cover-divider::after { content: ""; flex: 1; height: 1px; background: #99b3c5; }
+    .cover-divider::before, .cover-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
     .cover-divider .icon { width: 22px; height: 22px; flex-shrink: 0; }
     .cover.is-opening {
       position: fixed;
@@ -244,7 +254,18 @@
     .cover.is-opening .envelope-flap { transform: rotateX(-155deg); }
     .cover.is-opening .letter { opacity: 1; transform: translateY(-42%); }
     .cover.is-leaving { opacity: 0; filter: blur(7px); pointer-events: none; }
-    .snow-layer { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+    .snow-layer {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      max-width: var(--container-max-w);
+      height: 100dvh;
+      transform: translateX(-50%);
+      overflow: hidden;
+      z-index: 35;
+      pointer-events: none;
+    }
     .snow-particle {
       position: absolute;
       top: -20px;
@@ -252,27 +273,34 @@
       height: 4px;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 0 8px #fff;
-      opacity: .7;
+      box-shadow: 0 0 6px #fffafbd9, 0 0 2px var(--accent-soft);
+      opacity: .65;
       animation: snowfall var(--duration) var(--delay) linear infinite;
     }
+    .snow-crystal {
+      background: transparent;
+      box-shadow: none;
+      color: var(--paper);
+      filter: drop-shadow(0 0 1px var(--accent-soft));
+    }
+    .snow-crystal .icon { width: 100%; height: 100%; }
     @keyframes snowfall {
       from { transform: translate3d(0, -20px, 0); }
-      to { transform: translate3d(28px, 950px, 0); }
+      to { transform: translate3d(28px, calc(100dvh + 40px), 0); }
     }
     .hero {
       position: relative;
       height: min(100svh, 860px);
       min-height: clamp(480px, 75svh, 600px);
-      background: #d7e8f0;
+      background: var(--primary);
     }
-    .hero video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero video { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: var(--art-tint); }
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(transparent 59%, #eaf5fb40 73%, #fafdff 100%);
+      background: linear-gradient(transparent 46%, #f7cac940 65%, #fffafbe8 86%, var(--paper) 100%);
     }
     .hero-title {
       position: absolute;
@@ -318,24 +346,26 @@
       place-items: center;
       width: 48px;
       height: 48px;
-      border: 1px solid #94afbf;
+      border: 1px solid var(--control-border);
       border-radius: 50%;
-      color: var(--blue);
-      background: #f7fcffb3;
+      color: var(--accent);
+      background: #fffafbd9;
       transition: transform .2s ease, background-color .2s ease;
     }
     .continue-link:hover { transform: translateX(-50%) translateY(-2px); background: #ffffff; }
 
     .section {
       position: relative;
-      padding: clamp(54px, 8vh, 76px) var(--container-pad-x);
+      padding: var(--section-space) var(--container-pad-x);
       text-align: center;
+      isolation: isolate;
+      background: linear-gradient(var(--paper), var(--primary-soft) 50%, var(--paper));
     }
     .section h2 {
       font-family: var(--script);
       font-size: clamp(38px, 6.5vw, 50px);
       line-height: 1.18;
-      color: var(--blue);
+      color: var(--accent);
       margin-bottom: clamp(16px, 2.5vh, 24px);
     }
     .section p {
@@ -352,9 +382,9 @@
       max-width: 520px;
       margin-inline: auto;
       padding: clamp(34px, 5vh, 46px) clamp(22px, 4vw, 36px) clamp(38px, 5.5vh, 52px);
-      background: linear-gradient(100deg, #c4e4f2, #e9f7fd 50%, #c9e7f4);
+      background: linear-gradient(100deg, var(--primary), var(--paper) 50%, var(--surface-alt));
       border-radius: 15px 15px 20px 20px;
-      box-shadow: 0 9px 20px #4b7c9b17;
+      box-shadow: 0 9px 20px #70495717;
     }
     .scroll-paper::before, .scroll-paper::after {
       content: "";
@@ -362,10 +392,10 @@
       height: 23px;
       left: -12px;
       right: -12px;
-      background: linear-gradient(#f2fbff, #b6d9eb 50%, #d9eff9);
-      border: 1px solid #abcfe2;
+      background: linear-gradient(var(--paper), var(--primary) 50%, var(--surface-alt));
+      border: 1px solid var(--line);
       border-radius: 50% / 42%;
-      box-shadow: 0 5px 10px #54789216;
+      box-shadow: 0 5px 10px #70495716;
     }
     .scroll-paper::before { top: -10px; transform: rotate(-2deg); }
     .scroll-paper::after { bottom: -10px; transform: rotate(2deg); }
@@ -376,31 +406,31 @@
       align-items: center;
       gap: 17px;
       margin: 17px 0 24px;
-      color: var(--blue);
+      color: var(--accent);
     }
-    .music-player .music-line { width: clamp(30px, 8vw, 44px); height: 1px; background: #83adc5; position: relative; }
-    .music-player .music-line::before { content: ""; position: absolute; width: 3px; height: 7px; top: -3px; background: #83adc5; }
+    .music-player .music-line { width: clamp(30px, 8vw, 44px); height: 1px; background: var(--accent-soft); position: relative; }
+    .music-player .music-line::before { content: ""; position: absolute; width: 3px; height: 7px; top: -3px; background: var(--accent-soft); }
     .music-toggle {
-      border: 1px solid #9fb8c9;
+      border: 1px solid var(--control-border);
       border-radius: 50%;
       width: 52px;
       height: 52px;
       display: grid;
       place-items: center;
-      background: linear-gradient(140deg, #fff, #cfdae3);
+      background: linear-gradient(140deg, #fff, var(--surface-alt));
       cursor: pointer;
-      box-shadow: 0 4px 9px #32546d17;
+      box-shadow: 0 4px 9px #70495717;
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .music-toggle:hover { transform: scale(1.05); box-shadow: 0 6px 14px #32546d25; }
-    .music-toggle .icon { width: 24px; height: 24px; fill: #f7fcff; }
-    .music-toggle[aria-pressed="true"] .icon { fill: #5584a1; stroke: #5584a1; }
+    .music-toggle:hover { transform: scale(1.05); box-shadow: 0 6px 14px #70495725; }
+    .music-toggle .icon { width: 24px; height: 24px; fill: var(--paper); }
+    .music-toggle[aria-pressed="true"] .icon { fill: var(--accent); stroke: var(--accent); }
     .music-status { color: var(--muted); font-size: 12px; margin-top: 16px; }
 
     .floral-section {
-      padding-top: clamp(90px, 14vh, 124px);
-      padding-bottom: clamp(68px, 10vh, 92px);
-      background: radial-gradient(ellipse at 15% 35%, #edf7fc, transparent 68%);
+      padding-top: var(--section-space);
+      padding-bottom: var(--section-space);
+      background: radial-gradient(ellipse at 15% 35%, var(--primary-soft), transparent 68%);
     }
     .floral-section .roses.left {
       top: -12px;
@@ -418,9 +448,10 @@
       max-width: 520px;
       margin-inline: auto;
       padding: clamp(28px, 4.5vh, 38px) clamp(20px, 3.5vw, 32px);
-      background: #ffffffc9;
-      border-radius: 13px 13px 58px 58px;
-      box-shadow: 0 12px 25px #3152710c;
+      background: #fffafbe8;
+      border: 1px solid var(--line);
+      border-radius: var(--block-radius);
+      box-shadow: var(--shadow-card);
     }
     .person {
       display: block;
@@ -441,10 +472,10 @@
       max-width: 480px;
       margin: clamp(44px, 7vh, 60px) auto 0;
       padding: clamp(30px, 4.5vh, 40px) clamp(18px, 3.5vw, 26px);
-      background: linear-gradient(125deg, #f1f0eb, #e7e8e7, #f8f7f2);
-      border: 3px double #a7b3bc;
+      background: linear-gradient(125deg, var(--paper), var(--surface-alt), var(--paper));
+      border: 3px double var(--line);
       border-radius: 26px 6px 26px 6px;
-      box-shadow: 0 6px 10px #53627313;
+      box-shadow: 0 6px 10px #70495713;
     }
     .name-plaque::before, .name-plaque::after {
       content: "";
@@ -452,7 +483,7 @@
       width: 17px;
       height: 17px;
       background: var(--paper);
-      border: 1px solid #abb7bf;
+      border: 1px solid var(--line);
       transform: rotate(45deg);
     }
     .name-plaque::before { top: -9px; left: calc(50% - 9px); }
@@ -464,17 +495,17 @@
       justify-content: center;
       align-items: center;
       gap: 14px;
-      color: #7f9dad;
+      color: var(--accent-soft);
       margin: 0 auto 26px;
       width: 148px;
     }
-    .ornament::before, .ornament::after { content: ""; height: 1px; flex: 1; background: #bdcfd9; }
+    .ornament::before, .ornament::after { content: ""; height: 1px; flex: 1; background: var(--line); }
     .ornament .icon { width: 22px; height: 22px; }
 
     .countdown-section {
-      padding-top: clamp(48px, 7vh, 68px);
-      padding-bottom: clamp(36px, 5vh, 48px);
-      background: linear-gradient(#fbfdff, #eaf6fc, #fbfdff);
+      padding-top: var(--section-space);
+      padding-bottom: var(--section-space);
+      background: linear-gradient(var(--paper), var(--primary-soft), var(--paper));
     }
     .countdown-heading {
       font-family: var(--display);
@@ -499,7 +530,7 @@
       top: -3px;
       font-family: var(--display);
       font-size: clamp(28px, 5vw, 42px);
-      color: #6793ae;
+      color: var(--accent-soft);
     }
     .countdown-number {
       display: block;
@@ -507,7 +538,7 @@
       font-weight: 600;
       font-size: clamp(32px, 5.5vw, 48px);
       line-height: 1.1;
-      color: var(--blue);
+      color: var(--accent);
       font-variant-numeric: tabular-nums;
     }
     .countdown-unit span:last-child {
@@ -541,20 +572,21 @@
     .date-day {
       font-size: clamp(52px, 9vw, 72px);
       line-height: 1;
-      color: var(--blue);
+      color: var(--accent);
       font-weight: 600;
     }
     .countdown-message { font-size: 13px; margin-top: 14px !important; }
 
-    .reception-section { padding-top: clamp(95px, 15vh, 135px); }
+    .reception-section { padding-top: calc(var(--section-space) + 28px); }
     .reception-card {
       position: relative;
       max-width: 520px;
       margin-inline: auto;
-      border: 1px solid #aebec9;
-      border-radius: clamp(110px, 20vw, 160px) clamp(110px, 20vw, 160px) 0 0;
+      border: 1px solid var(--line);
+      border-radius: clamp(110px, 20vw, 160px) clamp(110px, 20vw, 160px) var(--block-radius) var(--block-radius);
       padding: clamp(74px, 11vh, 92px) clamp(20px, 3.5vw, 32px) clamp(28px, 4vh, 38px);
-      background: #fff;
+      background: linear-gradient(var(--paper), var(--primary-soft));
+      box-shadow: var(--shadow-card);
     }
     .reception-card .roses {
       width: clamp(145px, 26vw, 195px);
@@ -562,7 +594,7 @@
       left: -3px;
     }
     .reception-card .roses.mirror { left: auto; right: -3px; transform: scaleX(-1); }
-    .large-icon { width: clamp(52px, 8vw, 66px); height: clamp(52px, 8vw, 66px); color: #7295a8; margin: 0 auto 15px; }
+    .large-icon { width: clamp(52px, 8vw, 66px); height: clamp(52px, 8vw, 66px); color: var(--accent-soft); margin: 0 auto 15px; }
     .reception-card h2 { margin-bottom: 9px; }
     .venue-name {
       display: block;
@@ -573,18 +605,18 @@
       margin: 11px 0 8px;
     }
     .venue-address { font-size: 14px; }
-    .silver-button {
+    .quartz-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       min-height: 48px;
       padding: 12px clamp(18px, 3vw, 26px);
-      border: 1px solid #9aafbe;
-      border-radius: 4px;
-      background: linear-gradient(145deg, #fff, #e8edf1 40%, #c7d3dd 80%, #f7fafc);
-      color: #29475c;
-      box-shadow: 0 4px 9px #34566e19;
+      border: 1px solid var(--control-border);
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-soft), var(--primary) 72%, #efbdc4);
+      color: var(--primary-deep);
+      box-shadow: 0 4px 9px #70495719, inset 0 1px 0 #ffffffb3;
       font-family: var(--display);
       font-size: clamp(14px, 2vw, 15.5px);
       font-weight: 600;
@@ -595,22 +627,22 @@
       cursor: pointer;
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .silver-button:hover { transform: translateY(-2px); box-shadow: 0 7px 13px #34566e25; }
-    .silver-button .icon { width: 18px; height: 18px; }
-    .reception-card .silver-button { margin-top: 24px; }
+    .quartz-button:hover { transform: translateY(-2px); box-shadow: 0 7px 13px #70495725; }
+    .quartz-button .icon { width: 18px; height: 18px; }
+    .reception-card .quartz-button { margin-top: 24px; }
 
     .dress-icons { display: flex; justify-content: center; gap: 18px; margin: 4px auto 20px; }
-    .dress-icons .icon { width: 60px; height: 69px; color: #7b8d9e; }
+    .dress-icons .icon { width: 60px; height: 69px; color: var(--accent-soft); }
     .dress-title { font: 600 23px var(--display); margin-bottom: 14px !important; }
     .dress-note { max-width: 28ch !important; font-size: 14px; }
-    .gift-icon { width: 68px; height: 68px; margin: 0 auto 18px; color: #7b95a6; }
+    .gift-icon { width: 68px; height: 68px; margin: 0 auto 18px; color: var(--accent-soft); }
     .gift-message { font-size: 15px; }
 
     /* Itinerary & Timeline */
     .itinerary-tagline { font-size: 14px; margin-bottom: 20px; color: var(--muted); }
     .timeline { list-style: none; padding: 0; margin: 24px auto 0; max-width: 420px; text-align: left; }
     .timeline li { display: grid; grid-template-columns: clamp(82px, 20vw, 98px) 1fr; gap: 16px; margin: 18px 0; font-size: clamp(14.5px, 2.5vw, 17px); align-items: baseline; }
-    .timeline time { font-family: var(--display); font-weight: 600; color: var(--blue); }
+    .timeline time { font-family: var(--display); font-weight: 600; color: var(--accent); }
     .timeline span { padding-left: 16px; border-left: 1px solid var(--line); color: var(--ink); line-height: 1.4; }
 
     /* Vals card */
@@ -618,36 +650,32 @@
       margin-top: 28px;
       padding: clamp(22px, 3.5vw, 30px) clamp(18px, 3vw, 24px);
       border-radius: 12px;
-      background: #f1f8fc;
-      border: 1px solid #c2d6e3;
+      background: var(--primary-soft);
+      border: 1px solid var(--line);
       text-align: center;
     }
-    .vals-card .vals-icon { width: 32px; height: 32px; color: #7295a8; margin: 0 auto 10px; }
-    .vals-title { font-family: var(--display); font-size: clamp(22px, 3.5vw, 26px); color: var(--blue); font-weight: 600; margin-bottom: 8px; }
+    .vals-card .vals-icon { width: 32px; height: 32px; color: var(--accent-soft); margin: 0 auto 10px; }
+    .vals-title { font-family: var(--display); font-size: clamp(22px, 3.5vw, 26px); color: var(--accent); font-weight: 600; margin-bottom: 8px; }
     .vals-text { font-size: 14.5px; line-height: 1.6; max-width: 44ch; margin: 0 auto; }
     .vals-song { margin-top: 12px !important; font-size: 13.5px; color: var(--muted); }
 
     /* Gallery */
     .gallery-tagline { font-size: 14px; margin-bottom: 22px; color: var(--muted); }
-    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 3vw, 22px); margin-top: 8px; }
-    .gallery figure { margin: 0; }
+    .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 3vw, 22px); margin-top: 8px; }
+    .gallery figure { margin: 0; min-width: 0; }
     .gallery-picture {
-      min-height: clamp(180px, 26vh, 250px);
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
       border-radius: clamp(90px, 16vw, 130px) clamp(90px, 16vw, 130px) 6px 6px;
-      background: linear-gradient(155deg, #f0f7fb, #dcecf6);
-      border: 1px solid #bdd1de;
-      box-shadow: 0 8px 20px #31527110;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: #6a91a8;
-      padding: 16px;
+      background: linear-gradient(155deg, var(--primary-soft), var(--surface-alt));
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 20px #70495710;
     }
-    .gallery figure:nth-child(2) { padding-top: 24px; }
-    .gallery-picture .icon { width: 38px; height: 38px; opacity: .75; }
-    .gallery figcaption { font-family: var(--display); font-size: clamp(14px, 2.5vw, 16px); font-weight: 600; margin-top: 10px; color: var(--ink); }
+    .gallery-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .gallery-image.is-fantasy { filter: var(--art-tint); }
+    .gallery-image-error { position: absolute; inset: 0; display: grid; place-items: center; padding: 18px; font-size: 13px !important; color: var(--muted); }
+    .gallery figcaption { font-family: var(--display); font-size: clamp(14px, 2.5vw, 16px); font-weight: 600; margin-top: 10px; color: var(--ink); overflow-wrap: anywhere; }
 
     /* Gifts & Yape digital transfer */
     .gift-details {
@@ -660,18 +688,18 @@
       font-family: var(--display);
       font-weight: 600;
       font-size: clamp(15px, 2.5vw, 17px);
-      color: var(--blue);
+      color: var(--accent);
       user-select: none;
       outline: none;
       transition: color .2s ease;
     }
-    .gift-details summary:hover { color: #1e455e; }
+    .gift-details summary:hover { color: var(--primary-deep); }
     .gift-account {
-      border: 1px solid #a9bdcb;
+      border: 1px solid var(--control-border);
       border-radius: 8px;
       padding: clamp(18px, 3vw, 24px);
       margin-top: 16px;
-      background: #f7fcff;
+      background: var(--paper);
       text-align: center;
     }
     .yape-badge {
@@ -692,28 +720,28 @@
       font-family: var(--display);
       font-size: clamp(26px, 5.5vw, 36px);
       font-weight: 600;
-      color: var(--blue);
+      color: var(--accent);
       letter-spacing: .06em;
       margin: 4px 0;
     }
     .account-holder { display: block; font-size: 14px; color: var(--ink); margin-bottom: 16px; }
-    .form-status { font-size: 13px; color: var(--blue); margin-top: 10px; min-height: 1.4em; }
+    .form-status { font-size: 13px; color: var(--accent); margin-top: 10px; min-height: 1.4em; }
 
     /* Interactive guest features: playlist & guestbook */
     .interaction-card {
       max-width: 520px;
       margin: 28px auto 0;
       padding: clamp(26px, 4vh, 36px) clamp(20px, 3.5vw, 30px);
-      background: #ffffffd6;
+      background: #fffafbe8;
       border: 1px solid var(--line);
-      border-radius: 13px;
-      box-shadow: 0 10px 24px #3152710c;
+      border-radius: var(--block-radius);
+      box-shadow: var(--shadow-card);
     }
     .interaction-card h3 {
       font-family: var(--script);
       font-size: clamp(32px, 5.5vw, 42px);
       line-height: 1.2;
-      color: var(--blue);
+      color: var(--accent);
       margin-bottom: 8px;
     }
     .interaction-card p { font-size: 14px; }
@@ -724,38 +752,48 @@
       min-height: 85px;
       padding: 10px 12px;
       margin-top: 7px;
-      border: 1px solid #a9bdcb;
+      border: 1px solid var(--control-border);
       border-radius: 4px;
       background: #fff;
       color: var(--ink);
-      caret-color: var(--blue);
+      caret-color: var(--accent);
       font-family: var(--body);
       font-size: 14px;
       resize: vertical;
     }
-    .interaction-card .silver-button { width: 100%; margin-top: 18px; }
+    .interaction-card .quartz-button { width: 100%; margin-top: 18px; }
 
     .rsvp-section .paper-card {
       padding-top: clamp(28px, 4.5vh, 36px);
       padding-bottom: clamp(32px, 5vh, 42px);
     }
     .rsvp-section h2 { font-size: clamp(34px, 5.5vw, 44px); }
-    .rsvp-section .silver-button { margin-top: 24px; }
+    .rsvp-section .quartz-button { margin-top: 24px; }
     .rsvp-message { font-size: 14.5px; }
 
     .closing {
       position: relative;
       min-height: clamp(520px, 75vh, 660px);
-      background: #e5f1f9 url('./blue-silver-assets/castle.webp') center bottom / cover no-repeat;
+      background: var(--primary-soft);
+      isolation: isolate;
       padding: clamp(48px, 7vh, 64px) var(--container-pad-x) 22px;
       text-align: center;
+    }
+    .closing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(#fffafbdf, transparent 45%), url('./blue-silver-assets/castle.webp') center bottom / cover no-repeat;
+      filter: var(--art-tint);
+      pointer-events: none;
     }
     .closing h2 {
       position: relative;
       font-family: var(--script);
       font-size: clamp(40px, 7vw, 54px);
       line-height: 1.25;
-      color: var(--blue);
+      color: var(--accent);
     }
     .closing-name {
       position: relative;
@@ -771,7 +809,7 @@
       left: 14px;
       right: 14px;
       margin: 0;
-      color: #36566c;
+      color: var(--muted);
       font-size: 11px;
       text-align: center;
       background: #ffffffd9;
@@ -788,15 +826,15 @@
       height: 48px;
       display: grid;
       place-items: center;
-      border: 1px solid #a3bacb;
+      border: 1px solid var(--control-border);
       border-radius: 50%;
-      background: #f7fcfff0;
-      color: var(--blue);
-      box-shadow: 0 4px 14px #34566e20;
+      background: #fffafbf0;
+      color: var(--accent);
+      box-shadow: 0 4px 14px #70495720;
       cursor: pointer;
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .sound-dock:hover { transform: scale(1.08); box-shadow: 0 6px 18px #34566e30; }
+    .sound-dock:hover { transform: scale(1.08); box-shadow: 0 6px 18px #70495730; }
     .sound-dock .icon { width: 20px; height: 20px; }
 
     dialog {
@@ -805,12 +843,12 @@
       padding: clamp(26px, 4vh, 38px) clamp(20px, 3.5vw, 32px);
       overflow: auto;
       border: 1px solid var(--line);
-      border-radius: 13px;
+      border-radius: var(--block-radius);
       color: var(--ink);
       background: var(--paper);
-      box-shadow: 0 20px 65px #1b3d5733;
+      box-shadow: 0 20px 65px #50394433;
     }
-    dialog::backdrop { background: #18374e75; backdrop-filter: blur(4px); }
+    dialog::backdrop { background: #50394480; backdrop-filter: blur(4px); }
     .dialog-close {
       position: absolute;
       top: 9px;
@@ -825,12 +863,12 @@
       border-radius: 50%;
       transition: background-color .2s ease;
     }
-    .dialog-close:hover { background: #eaf3f8; }
+    .dialog-close:hover { background: var(--primary-soft); }
     dialog h2 {
       font-family: var(--script);
       font-size: clamp(34px, 5.5vw, 44px);
       line-height: 1.25;
-      color: var(--blue);
+      color: var(--accent);
       margin: 10px 0 18px;
       text-align: center;
     }
@@ -842,22 +880,68 @@
       min-height: 46px;
       padding: 10px 12px;
       margin-top: 7px;
-      border: 1px solid #a9bdcb;
+      border: 1px solid var(--control-border);
       border-radius: 4px;
       background: #fff;
       color: var(--ink);
-      caret-color: var(--blue);
+      caret-color: var(--accent);
     }
     .form-submit { width: 100%; margin-top: 25px; }
     .response-preview {
       white-space: pre-line;
-      background: #eaf5fb;
+      background: var(--surface-alt);
       padding: 18px;
       margin: 18px 0;
       border-radius: 5px;
       font-size: 14px;
     }
     .small-note { font-size: 12px !important; color: var(--muted); margin-top: 15px; }
+
+
+    /* Shared rose-quartz rhythm and quiet fairytale ornaments. */
+    .section:not(.intro)::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: calc(50% - 6px);
+      width: 12px;
+      height: 20px;
+      background: var(--primary);
+      clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+      pointer-events: none;
+    }
+    .section:not(.intro)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      pointer-events: none;
+    }
+    .fantasy-glimmer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      color: #fffafb;
+      pointer-events: none;
+      filter: drop-shadow(0 0 5px #fffafbaa);
+    }
+    .fantasy-glimmer use { animation: starlight 5s ease-in-out infinite alternate; }
+    .fantasy-glimmer use:nth-child(even) { animation-delay: -2.5s; }
+    @keyframes starlight {
+      from { opacity: .35; }
+      to { opacity: .85; }
+    }
+    .hero-title { text-shadow: 0 1px 14px #fffafbb3; }
+    .name-plaque { box-shadow: var(--shadow-card); }
+    .gift-account, .vals-card { border-radius: 16px; }
+    .gallery-picture { box-shadow: var(--shadow-card); }
+    .closing h2, .closing-name { text-shadow: 0 1px 12px var(--paper); }
+    input, select, .interaction-card textarea { border-radius: 10px; background: var(--paper); }
 
     /* Media query: Short viewports & Mobile landscape */
     @media (max-height: 540px) {
@@ -893,12 +977,11 @@
       .date-day { font-size: 46px; }
       .person { font-size: 26px; }
       .name-plaque .person { font-size: 34px; }
-      .reception-card { padding-inline: 16px; border-radius: 90px 90px 0 0; }
+      .reception-card { padding-inline: 16px; border-radius: 90px 90px var(--block-radius) var(--block-radius); }
       .rsvp-section h2 { font-size: 32px; }
       .timeline li { grid-template-columns: 1fr; gap: 4px; margin: 14px 0; }
       .timeline span { padding-left: 0; border-left: 0; }
       .gallery { grid-template-columns: 1fr; }
-      .gallery figure:nth-child(2) { padding-top: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -910,10 +993,13 @@
 </head>
 <body class="sealed">
   <!-- Standalone visual preview. Edit this single data block before sharing. -->
+  <!-- Gallery: edit src, alt, caption and position in gallery below.
+       Image paths are relative to this HTML file. Add or remove entries as needed.
+       Use fantasyTint: true for themed illustrations, false for original photo colors. -->
   <script type="application/json" id="invitation-data">
     {
-      "name": "Antonella Luana",
-      "parents": ["Daniel Meza Rivas", "Luciana García Rojas"],
+      "name": "Estefany Brigith",
+      "parents": ["Diana Esther Bedoya Zarate", "Jorge Luis Grabiel La Rosa"],
       "godparents": ["Juan Meneses Rivas", "María Rojas Casas"],
       "date": "2026-11-28T19:00:00-05:00",
       "timezone": "America/Lima",
@@ -924,11 +1010,28 @@
       "yapeNumber": "902 816 211",
       "yapeHolder": "Matias Grabiel",
       "whatsappNumber": "902816211",
-      "sampleData": true
+      "sampleData": true,
+      "gallery": [
+        {
+          "src": "./blue-silver-assets/woman-magic-poster.jpg",
+          "alt": "Escena de fantasía de una joven frente a un castillo nevado",
+          "caption": "Un nuevo capítulo",
+          "position": "center 40%",
+          "fantasyTint": true
+        },
+        {
+          "src": "./blue-silver-assets/castle.webp",
+          "alt": "Entrada de un castillo de fantasía entre flores y cristales",
+          "caption": "La ilusión de mis XV",
+          "position": "center 60%",
+          "fantasyTint": true
+        }
+      ]
     }
   </script>
   <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <defs>
+      <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 1 15 9 23 12 15 15 12 23 9 15 1 12 9 9Z" fill="currentColor"/></symbol>
       <symbol id="snowflake" viewBox="0 0 24 24"><path d="M12 2v20M3.34 7l17.32 10M3.34 17 20.66 7M9 4l3 3 3-3M9 20l3-3 3 3M3.7 10.5l4.1-1.1-1.1-4.1M17.3 18.7l-1.1-4.1 4.1-1.1M3.7 13.5l4.1 1.1-1.1 4.1M17.3 5.3l-1.1 4.1 4.1 1.1"/></symbol>
       <symbol id="heart" viewBox="0 0 24 24"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.5a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
       <symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
@@ -946,14 +1049,16 @@
     </defs>
   </svg>
 
+  <div class="snow-layer" id="invitation-snow" aria-hidden="true"></div>
+
   <section class="cover" id="cover" aria-label="Portada de la invitación">
     <img class="roses top" src="./blue-silver-assets/roses.webp" alt="" width="1254" height="1254">
     <img class="roses bottom" src="./blue-silver-assets/roses.webp" alt="" width="1254" height="1254">
-    <div class="snow-layer" id="cover-snow" aria-hidden="true"></div>
+    <svg class="fantasy-glimmer" viewBox="0 0 640 1000" preserveAspectRatio="none" aria-hidden="true"><use href="#sparkle" x="105" y="155" width="18" height="25"/><use href="#sparkle" x="520" y="295" width="13" height="18"/><use href="#sparkle" x="60" y="640" width="14" height="20"/><use href="#sparkle" x="560" y="810" width="21" height="30"/></svg>
     <div class="cover-inner">
       <p class="occasion" aria-label="Mis quince años"><span class="mis">Mis</span><span class="roman">XV</span><span class="years">Años</span></p>
       <button class="envelope-button" id="open-invitation" aria-label="Abrir la invitación de Antonella Luana" aria-controls="invitation" aria-expanded="false">
-        <img class="envelope-image" src="./blue-silver-assets/envelope.webp" alt="Sobre celeste con filigrana plateada y sello de corona" width="1536" height="1024">
+        <img class="envelope-image" src="./blue-silver-assets/envelope.webp" alt="Sobre rosa cuarzo con filigrana plateada y sello de corona" width="1536" height="1024">
         <span class="letter" aria-hidden="true">Una noche mágica</span>
         <img class="envelope-front" src="./blue-silver-assets/envelope.webp" alt="" width="1536" height="1024">
         <img class="envelope-flap" src="./blue-silver-assets/envelope.webp" alt="" width="1536" height="1024">
@@ -967,9 +1072,10 @@
 
   <main class="invitation" id="invitation" hidden inert>
     <section class="hero" aria-label="Una noche de magia">
-      <video id="magic-video" muted loop playsinline preload="none" poster="./blue-silver-assets/woman-magic-poster.jpg" aria-label="Una joven con vestido celeste frente a un castillo nevado">
+      <video id="magic-video" muted loop playsinline preload="none" poster="./blue-silver-assets/woman-magic-poster.jpg" aria-label="Una joven frente a un castillo nevado, en tonos de rosa cuarzo">
         <source src="./woman_magic.mp4" type="video/mp4">
       </video>
+    <svg class="fantasy-glimmer" viewBox="0 0 640 1000" preserveAspectRatio="none" aria-hidden="true"><use href="#sparkle" x="105" y="155" width="18" height="25"/><use href="#sparkle" x="520" y="295" width="13" height="18"/><use href="#sparkle" x="60" y="640" width="14" height="20"/><use href="#sparkle" x="560" y="810" width="21" height="30"/></svg>
       <div class="hero-title"><h2>Mis<span class="roman">XV</span><span class="years">Años</span></h2></div>
       <a class="continue-link" href="#welcome" aria-label="Continuar a los detalles"><svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></a>
     </section>
@@ -1028,7 +1134,7 @@
         <p>Horario: <span id="event-time">7:00 p. m.</span></p>
         <span class="venue-name" id="venue-name">Salón Cristal</span>
         <p class="venue-address" id="venue-address">Lima, Perú</p>
-        <a class="silver-button" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Lima%2C%20Per%C3%BA" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
+        <a class="quartz-button" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Lima%2C%20Per%C3%BA" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
       </div>
     </section>
 
@@ -1049,7 +1155,7 @@
           <svg class="icon vals-icon" aria-hidden="true"><use href="#snowflake"/></svg>
           <h3 class="vals-title">Mi Primer Vals</h3>
           <p class="vals-text">Un momento único e inolvidable: un baile junto a mi mamá para dar gracias y celebrar este sueño juntas.</p>
-          <p class="vals-song"><strong>Tiempo de vals</strong> · Chayanne</p>
+          <p class="vals-song"><strong>No Crezcas Más</strong> · Tercer Cielo</p>
         </div>
       </div>
     </section>
@@ -1058,20 +1164,7 @@
       <h2 id="gallery-heading">Recuerdos que Brillan</h2>
       <div class="paper-card">
         <p class="gallery-tagline">Momentos especiales en este camino hacia mis quince años.</p>
-        <div class="gallery">
-          <figure>
-            <div class="gallery-picture" role="img" aria-label="Retrato de la quinceañera">
-              <svg class="icon" aria-hidden="true"><use href="#heart"/></svg>
-            </div>
-            <figcaption>Un nuevo capítulo</figcaption>
-          </figure>
-          <figure>
-            <div class="gallery-picture" role="img" aria-label="Detalle del vestido">
-              <svg class="icon" aria-hidden="true"><use href="#snowflake"/></svg>
-            </div>
-            <figcaption>La ilusión de mis XV</figcaption>
-          </figure>
-        </div>
+        <div class="gallery" id="memories-gallery"></div>
       </div>
     </section>
 
@@ -1095,7 +1188,7 @@
             <span class="yape-badge">Yape</span>
             <strong class="account-number" id="yape-display-number">902 816 211</strong>
             <small class="account-holder">Titular: <span id="yape-display-holder">Matias Grabiel</span></small>
-            <button class="silver-button" id="copy-account" type="button">
+            <button class="quartz-button" id="copy-account" type="button">
               <svg class="icon" aria-hidden="true"><use href="#copy"/></svg>Copiar número
             </button>
             <p id="copy-status" class="form-status" role="status" aria-live="polite"></p>
@@ -1116,7 +1209,7 @@
           <label class="form-field" for="song-input">Canción y artista
             <input id="song-input" name="song" placeholder="Ej.: Tiempo de vals, Chayanne" required maxlength="160">
           </label>
-          <button class="silver-button form-submit" type="submit">
+          <button class="quartz-button form-submit" type="submit">
             <svg class="icon" aria-hidden="true"><use href="#music"/></svg>Sugerir canción
           </button>
           <p id="song-status" class="form-status" role="status"></p>
@@ -1133,7 +1226,7 @@
           <label class="form-field" for="guestbook-message">Tu dedicatoria
             <textarea id="guestbook-message" name="message" placeholder="Escribe tus mejores deseos para mis quince años..." required maxlength="1000"></textarea>
           </label>
-          <button class="silver-button form-submit" type="submit">
+          <button class="quartz-button form-submit" type="submit">
             <svg class="icon" aria-hidden="true"><use href="#heart"/></svg>Dejar mensaje
           </button>
           <p id="guestbook-status" class="form-status" role="status"></p>
@@ -1148,7 +1241,7 @@
       <div class="paper-card">
         <svg class="icon gift-icon" aria-hidden="true"><use href="#guest"/></svg>
         <p class="rsvp-message">Me encantará compartir esta noche contigo. Confirma tu asistencia por WhatsApp.</p>
-        <button class="silver-button" id="rsvp-open">Confirmar asistencia</button>
+        <button class="quartz-button" id="rsvp-open">Confirmar asistencia</button>
       </div>
     </section>
 
@@ -1170,12 +1263,12 @@
       <label class="form-field" for="guest-name">Tu nombre<input id="guest-name" name="name" autocomplete="name" maxlength="100" required></label>
       <label class="form-field" for="attendance">Tu respuesta<select id="attendance" name="attendance"><option value="yes">Sí, asistiré</option><option value="no">No podré asistir</option></select></label>
       <label class="form-field" for="party-size" id="party-size-field">Personas que asistirán, incluyéndote<select id="party-size" name="partySize"><option value="1">1 persona</option><option value="2">2 personas</option><option value="3">3 personas</option><option value="4">4 personas</option></select></label>
-      <button class="silver-button form-submit" type="submit">Preparar mensaje</button>
+      <button class="quartz-button form-submit" type="submit">Preparar mensaje</button>
     </form>
     <div id="rsvp-result" hidden>
       <p role="status">Tu mensaje está listo:</p>
       <p class="response-preview" id="response-preview"></p>
-      <a class="silver-button form-submit" id="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+      <a class="quartz-button form-submit" id="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
       <p class="small-note" id="whatsapp-note">El mensaje se enviará cuando lo confirmes en WhatsApp.</p>
     </div>
   </dialog>
@@ -1219,6 +1312,34 @@
         document.getElementById('yape-display-holder').textContent = data.yapeHolder;
       }
       document.getElementById('sample-note').hidden = !data.sampleData;
+      const galleryItems = Array.isArray(data.gallery) ? data.gallery : [];
+      const gallery = document.getElementById('memories-gallery');
+      document.getElementById('gallery').hidden = galleryItems.length === 0;
+      galleryItems.forEach(item => {
+        const imageData = item && typeof item === 'object' ? item : {};
+        const figure = document.createElement('figure');
+        const picture = document.createElement('div');
+        const image = document.createElement('img');
+        const caption = document.createElement('figcaption');
+        picture.className = 'gallery-picture';
+        image.className = imageData.fantasyTint === true ? 'gallery-image is-fantasy' : 'gallery-image';
+        image.alt = imageData.alt || 'Imagen de la galería';
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.style.objectPosition = imageData.position || 'center';
+        image.addEventListener('error', () => {
+          image.hidden = true;
+          const message = document.createElement('p');
+          message.className = 'gallery-image-error';
+          message.textContent = 'No se pudo cargar esta imagen.';
+          picture.append(message);
+        }, { once: true });
+        image.src = imageData.src || '';
+        caption.textContent = imageData.caption || '';
+        picture.append(image);
+        figure.append(picture, caption);
+        gallery.append(figure);
+      });
       for (const [id, part] of [['date-month', 'month'], ['date-weekday', 'weekday'], ['date-day', 'day'], ['date-year', 'year']]) {
         const option = part === 'month' || part === 'weekday' ? 'long' : 'numeric';
         document.getElementById(id).textContent = new Intl.DateTimeFormat('es-PE', { ...dateOptions, [part]: option }).format(eventDate);
@@ -1238,17 +1359,25 @@
       updateCountdown();
       const countdownInterval = window.setInterval(updateCountdown, 1000);
 
-      if (!motionPreference.matches) {
-        const snow = document.getElementById('cover-snow');
-        for (let index = 0; index < 24; index += 1) {
-          const particle = document.createElement('span');
-          particle.className = 'snow-particle';
-          particle.style.left = `${(index * 41) % 100}%`;
-          particle.style.setProperty('--duration', `${10 + (index % 7)}s`);
-          particle.style.setProperty('--delay', `${-index * .7}s`);
-          particle.style.width = particle.style.height = `${2 + (index % 3)}px`;
-          snow.append(particle);
+      const snow = document.getElementById('invitation-snow');
+      for (let index = 0; index < 32; index += 1) {
+        const particle = document.createElement('span');
+        const crystal = index % 5 === 0;
+        particle.className = crystal ? 'snow-particle snow-crystal' : 'snow-particle';
+        particle.style.left = `${(index * 41) % 94}%`;
+        particle.style.setProperty('--duration', `${12 + (index % 7)}s`);
+        particle.style.setProperty('--delay', `${-index * .7}s`);
+        const size = crystal ? 8 + (index % 3) * 2 : 3 + (index % 3);
+        particle.style.width = particle.style.height = `${size}px`;
+        if (crystal) {
+          const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          const symbol = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+          icon.classList.add('icon');
+          symbol.setAttribute('href', '#snowflake');
+          icon.append(symbol);
+          particle.append(icon);
         }
+        snow.append(particle);
       }
 
       async function playVideo() {
