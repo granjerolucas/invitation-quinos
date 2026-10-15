@@ -204,7 +204,12 @@
       perspective: 900px;
       position: relative;
       filter: drop-shadow(0 14px 15px #70495720);
-      transition: transform .3s ease;
+      transition: transform .3s ease, filter .3s ease;
+      animation: float-envelope 3.8s ease-in-out infinite;
+    }
+    @keyframes float-envelope {
+      0%, 100% { transform: translateY(0); filter: drop-shadow(0 14px 15px #70495720); }
+      50% { transform: translateY(-6px); filter: drop-shadow(0 20px 22px #70495735); }
     }
     .envelope-button:hover { transform: translateY(-4px); }
     .envelope-image { position: relative; width: 100%; z-index: 1; }
@@ -743,7 +748,8 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       color: #fff;
-      background: #742284;
+      background: linear-gradient(135deg, #742284, var(--primary-deep));
+      box-shadow: 0 2px 8px rgba(116, 34, 132, 0.22);
       padding: 3px 12px;
       border-radius: 12px;
       margin-bottom: 8px;
@@ -941,6 +947,11 @@
       background: var(--paper);
       color: var(--ink);
       caret-color: var(--accent);
+    }
+    input:focus, select:focus, .interaction-card textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(247, 202, 201, 0.55);
     }
     .form-submit { width: 100%; margin-top: 25px; }
     .response-preview {
@@ -1161,8 +1172,9 @@
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <h2 id="godparents-heading" class="reveal-on-scroll">Mis Padrinos</h2>
-      <div class="reveal-on-scroll">
+      <div class="paper-card reveal-on-scroll">
         <span class="person" id="godparent-one">Juan Meneses Rivas</span><span class="and">y</span><span class="person" id="godparent-two">María Rojas Casas</span>
+        <p class="family-caption">Quienes con su cariño y guía me acompañan en este día tan especial.</p>
       </div>
     </section>
 
@@ -1281,7 +1293,6 @@
             <svg class="icon" aria-hidden="true"><use href="#music"/></svg>Sugerir canción
           </button>
           <p id="song-status" class="form-status" role="status"></p>
-          <a id="song-wa-link" class="quartz-button is-secondary" href="#" target="_blank" rel="noopener noreferrer" hidden>Enviar sugerencia por WhatsApp</a>
         </form>
         <ul class="saved-list" id="saved-songs-list" hidden aria-label="Canciones sugeridas"></ul>
       </div>
@@ -1655,7 +1666,6 @@
           const currentForm = event.currentTarget;
           const song = new FormData(currentForm).get('song')?.toString().trim();
           const status = document.getElementById('song-status');
-          const waLink = document.getElementById('song-wa-link');
           if (!song) return;
 
           const songs = loadStoredArray(STORAGE_SONGS_KEY);
@@ -1663,13 +1673,13 @@
           saveStoredArray(STORAGE_SONGS_KEY, songs.slice(0, 15));
           renderSavedSongs();
 
-          status.textContent = `¡Gracias! Añadimos «${song}» a tu lista de sugerencias.`;
-          if (waLink && waPhone) {
-            const waText = `¡Hola! Sugiero esta canción para la fiesta de XV años de ${data.name}: 🎵 ${song}`;
-            waLink.href = `https://wa.me/${waPhone}?text=${encodeURIComponent(waText)}`;
-            waLink.hidden = false;
+          const phone = String(data.whatsappNumber || '').replace(/\D/g, '');
+          status.textContent = `¡Gracias! Añadiremos «${song}» a la lista de canciones.`;
+          if (phone) {
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(`🎵 Sugerencia musical para los XV de ${data.name}:${song}`)}`, '_blank', 'noopener');
           }
           currentForm.reset();
+          window.setTimeout(() => { status.textContent = ''; }, 5000);
         });
       }
 
