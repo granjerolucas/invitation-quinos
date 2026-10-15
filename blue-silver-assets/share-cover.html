@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1200">
+  <title>Invitation sharing cover</title>
+  <link rel="stylesheet" href="./fonts.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+    body { position: relative; background: radial-gradient(ellipse at 38% 40%, #fffafb, #fff0f2 55%, #f0cac9); color: #6f4055; }
+    .border { position: absolute; inset: 22px; border: 1px solid #ad7e9170; border-radius: 6px; }
+    .roses { position: absolute; width: 310px; filter: sepia(1) saturate(.65) hue-rotate(295deg); }
+    .roses.top { top: -70px; left: -55px; }
+    .roses.bottom { bottom: -75px; right: -45px; transform: rotate(180deg); }
+    .copy { position: absolute; top: 102px; left: 110px; width: 610px; text-align: center; }
+    .occasion { margin: 0; font: 52px 'Great Vibes', cursive; }
+    h1 { margin: 20px 0 22px; font: 76px/1.15 'Great Vibes', cursive; text-wrap: balance; }
+    .line { width: 210px; height: 1px; margin: 0 auto 25px; background: linear-gradient(90deg, transparent, #ad7e91, transparent); }
+    .date { margin: 0 0 15px; font: 600 28px 'Cormorant Garamond', serif; letter-spacing: .04em; }
+    .message { max-width: 480px; margin: auto; font: 20px/1.6 Lora, serif; color: #735a65; }
+    .envelope { position: absolute; width: 425px; right: 45px; top: 170px; transform: rotate(-7deg); filter: sepia(1) saturate(.65) hue-rotate(295deg) drop-shadow(0 16px 20px #80536728); }
+    .sparkle { position: absolute; font: 34px Georgia, serif; color: #ad7e91; }
+    .one { top: 105px; right: 235px; }
+    .two { bottom: 115px; right: 380px; font-size: 22px; }
+  </style>
+</head>
+<body>
+  <div class="border"></div>
+  <img class="roses top" src="./roses.webp" alt="">
+  <img class="roses bottom" src="./roses.webp" alt="">
+  <div class="copy">
+    <p class="occasion">Mis XV Años</p>
+    <h1 id="name">Estefany Brigith</h1>
+    <div class="line"></div>
+    <p class="date" id="date">28 de noviembre de 2026</p>
+    <p class="message">Una noche de magia, sueños y recuerdos para compartir contigo.</p>
+  </div>
+  <img class="envelope" src="./envelope.webp" alt="Sobre rosa cuarzo con sello de corona">
+  <span class="sparkle one">✧</span><span class="sparkle two">✧</span>
+  <script>
+    window.coverReady = (async () => {
+      const source = await fetch('../quince-blue-silver.html').then(response => response.text());
+      const parsed = new DOMParser().parseFromString(source, 'text/html');
+      const data = JSON.parse(parsed.getElementById('invitation-data').textContent);
+      document.getElementById('name').textContent = data.name;
+      document.getElementById('date').textContent = new Intl.DateTimeFormat('es-PE', {
+        day: 'numeric', month: 'long', year: 'numeric', timeZone: data.timezone
+      }).format(new Date(data.date));
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(image => image.decode()));
+    })();
+  </script>
+</body>
+</html>

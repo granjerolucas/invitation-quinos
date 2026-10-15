@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="384" viewBox="0 0 384 384" fill="none">
+  <!-- Nine-slice master: cut 72 units from each edge; keep the center filled. -->
+  <defs>
+    <linearGradient id="sheet" x1="28" y1="192" x2="356" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d6a2b0"/>
+      <stop offset=".055" stop-color="#f2d2d5"/>
+      <stop offset=".16" stop-color="#fff2f2"/>
+      <stop offset=".5" stop-color="#fff9f6"/>
+      <stop offset=".84" stop-color="#fff2f2"/>
+      <stop offset=".945" stop-color="#f2d2d5"/>
+      <stop offset="1" stop-color="#d6a2b0"/>
+    </linearGradient>
+    <linearGradient id="roll" x1="192" y1="14" x2="192" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c794a5"/>
+      <stop offset=".18" stop-color="#f3c7ce"/>
+      <stop offset=".38" stop-color="#fff8f3"/>
+      <stop offset=".57" stop-color="#f7cac9"/>
+      <stop offset=".84" stop-color="#d6a0b0"/>
+      <stop offset="1" stop-color="#b68194"/>
+    </linearGradient>
+    <radialGradient id="curl">
+      <stop stop-color="#906276"/>
+      <stop offset=".3" stop-color="#c992a6"/>
+      <stop offset=".55" stop-color="#f7cac9"/>
+      <stop offset=".8" stop-color="#ffefeb"/>
+      <stop offset="1" stop-color="#ba889b"/>
+    </radialGradient>
+    <pattern id="fibers" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M2 6h3m7 9h2m3-12h1M6 18h1" stroke="#a27786" stroke-opacity=".065" stroke-linecap="round"/>
+    </pattern>
+    <path id="sheet-shape" d="M35 34H349L347 110L350 172L347 232L350 293L347 350H37L34 291L37 226L34 164L37 105Z"/>
+    <g id="rolled-edge">
+      <rect x="22" y="14" width="340" height="42" rx="15" fill="url(#roll)" stroke="#b8889a" stroke-width="1.2"/>
+      <path d="M37 29H347" stroke="#fffaf7" stroke-opacity=".85" stroke-width="2"/>
+      <path d="M39 48H345" stroke="#ad7c90" stroke-opacity=".45"/>
+      <ellipse cx="23" cy="35" rx="9" ry="21" fill="url(#curl)" stroke="#b18396" stroke-width="1.1"/>
+      <ellipse cx="361" cy="35" rx="9" ry="21" fill="url(#curl)" stroke="#b18396" stroke-width="1.1"/>
+      <path d="M23 25C29 25 29 45 23 45C19 45 19 32 23 32C26 32 26 39 23 39" stroke="#9a6a80" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M361 25C355 25 355 45 361 45C365 45 365 32 361 32C358 32 358 39 361 39" stroke="#9a6a80" stroke-width="1.1" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <use href="#sheet-shape" fill="url(#sheet)" stroke="#c69ba9" stroke-width="1.2"/>
+  <use href="#sheet-shape" fill="url(#fibers)"/>
+  <path d="M54 68V316M330 68V316" stroke="#d9b7c0" stroke-opacity=".5"/>
+  <use href="#rolled-edge"/>
+  <use href="#rolled-edge" transform="translate(384 384) rotate(180)"/>
+</svg>

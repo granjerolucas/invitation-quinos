@@ -2,24 +2,36 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7cac9">
-  <meta name="description" content="Acompáñame a celebrar una noche mágica en mis XV Años · Estefany Brigith.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f0cac9">
+  <meta name="description" content="Te invito a una noche de magia y recuerdos para celebrar mis quince años. 28 de noviembre de 2026 · Lima.">
 
-  <!-- Open Graph para compartir en WhatsApp / Redes Sociales -->
+  <!-- share-metadata:start -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mis XV Años · Estefany Brigith">
-  <meta property="og:description" content="Con la bendición de Dios y el amor de mi familia, te invito a celebrar mis quince años.">
-  <meta property="og:image" content="./blue-silver-assets/woman-magic-poster.jpg">
+  <meta property="og:description" content="Te invito a una noche de magia y recuerdos para celebrar mis quince años. 28 de noviembre de 2026 · Lima.">
+  <meta property="og:image" content="./blue-silver-assets/share-cover.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Invitación de quince años de Estefany Brigith, en rosa cuarzo y plata">
+  <meta property="og:locale" content="es_PE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mis XV Años · Estefany Brigith">
+  <meta name="twitter:description" content="Te invito a una noche de magia y recuerdos para celebrar mis quince años. 28 de noviembre de 2026 · Lima.">
+  <meta name="twitter:image" content="./blue-silver-assets/share-cover.jpg">
+  <!-- share-metadata:end -->
 
   <title>Mis XV Años · Estefany Brigith</title>
   <link rel="stylesheet" href="./blue-silver-assets/fonts.css">
   <link rel="preload" href="./blue-silver-assets/envelope.webp" as="image">
   <link rel="preload" href="./blue-silver-assets/roses.webp" as="image">
+  <link rel="preload" href="./blue-silver-assets/parchment-quartz-soft.png" as="image" type="image/png">
+  <link rel="preload" href="./blue-silver-assets/title-ribbon-quartz.png" as="image" type="image/png">
   <style>
     :root {
       color-scheme: light;
-      --primary: #f7cac9;
+      --primary: #f0cac9;
       --primary-soft: #fff0f2;
       --primary-deep: #6f4055;
       --accent: #805367;
@@ -41,14 +53,14 @@
 
       /* Responsive container tokens */
       --container-max-w: 480px;
-      --container-pad-x: 24px;
+      --container-pad-x: 18px;
       --shadow-ambient: 0 18px 80px rgba(80, 57, 68, 0.14);
     }
 
     @media (min-width: 640px) {
       :root {
         --container-max-w: 580px;
-        --container-pad-x: 36px;
+        --container-pad-x: 28px;
         --shadow-ambient: 0 24px 80px rgba(80, 57, 68, 0.22), 0 4px 24px rgba(80, 57, 68, 0.08);
       }
     }
@@ -56,7 +68,7 @@
     @media (min-width: 1024px) {
       :root {
         --container-max-w: 640px;
-        --container-pad-x: 44px;
+        --container-pad-x: 32px;
         --shadow-ambient: 0 30px 90px rgba(80, 57, 68, 0.25), 0 6px 30px rgba(80, 57, 68, 0.1);
       }
     }
@@ -258,6 +270,24 @@
       text-align: center;
       animation: pulse-hint 2.4s ease-in-out infinite;
     }
+    .opening-music-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      margin-top: 12px;
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--accent);
+      font-family: var(--display);
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .opening-music-toggle .icon { width: 18px; height: 18px; }
+    .opening-music-status { max-width: 28ch; margin-top: 8px; font-size: 12px; text-align: center; }
     @keyframes pulse-hint {
       0%, 100% { opacity: .65; transform: translateY(0); }
       50% { opacity: 1; transform: translateY(-2px); }
@@ -346,7 +376,7 @@
       font-family: var(--script);
       font-size: clamp(34px, 7vw, 54px);
       line-height: .9;
-      transform: translateX(clamp(-40px, -10vw, -25px));
+      /* transform: translateX(clamp(-40px, -10vw, -25px)); */
     }
     .hero-title .roman {
       display: block;
@@ -390,8 +420,19 @@
       background: linear-gradient(var(--paper), var(--primary-soft) 50%, var(--paper));
     }
     .section h2 {
+      width: 100%;
+      max-width: 560px;
+      margin-inline: auto;
+      border: 0 solid transparent;
+      border-inline-width: 48px;
+      padding: 10px 0 28px;
+      border-image-source: url('./blue-silver-assets/title-ribbon-quartz.png');
+      border-image-slice: 190 380 fill;
+      border-image-width: 28px 56px;
+      border-image-outset: 28px 0;
+      border-image-repeat: stretch;
       font-family: var(--script);
-      font-size: clamp(38px, 6.5vw, 50px);
+      font-size: clamp(30px, 6vw, 40px);
       line-height: 1.18;
       color: var(--accent);
       margin-bottom: clamp(16px, 2.5vh, 24px);
@@ -405,28 +446,6 @@
       padding-top: clamp(20px, 4vh, 32px);
       padding-bottom: clamp(48px, 7vh, 68px);
     }
-    .scroll-paper {
-      position: relative;
-      max-width: 520px;
-      margin-inline: auto;
-      padding: clamp(34px, 5vh, 46px) clamp(22px, 4vw, 36px) clamp(38px, 5.5vh, 52px);
-      background: linear-gradient(100deg, var(--primary), var(--paper) 50%, var(--surface-alt));
-      border-radius: 15px 15px 20px 20px;
-      box-shadow: 0 9px 20px #70495717;
-    }
-    .scroll-paper::before, .scroll-paper::after {
-      content: "";
-      position: absolute;
-      height: 23px;
-      left: -12px;
-      right: -12px;
-      background: linear-gradient(var(--paper), var(--primary) 50%, var(--surface-alt));
-      border: 1px solid var(--line);
-      border-radius: 50% / 42%;
-      box-shadow: 0 5px 10px #70495716;
-    }
-    .scroll-paper::before { top: -10px; transform: rotate(-2deg); }
-    .scroll-paper::after { bottom: -10px; transform: rotate(2deg); }
     .music-label { font-size: 13.5px; line-height: 1.7; max-width: 24ch !important; }
     .music-player {
       display: flex;
@@ -472,15 +491,33 @@
       transform: scaleX(-1);
     }
     .floral-section > :not(.roses) { position: relative; z-index: 1; }
-    .paper-card {
-      max-width: 520px;
+    /* 1024 x 1536 paper master: fixed curls and corners, flexible writing area. */
+    .scroll-paper, .paper-card, .interaction-card {
+      --parchment-cap: calc(448px * .12);
+      --parchment-edge: calc(384px * .12);
+      position: relative;
+      max-width: 560px;
       margin-inline: auto;
-      padding: clamp(28px, 4.5vh, 38px) clamp(20px, 3.5vw, 32px);
-      background: #fffafbe8;
-      border: 1px solid var(--line);
-      border-radius: var(--block-radius);
-      box-shadow: var(--shadow-card);
+      margin-block: 16px;
+      padding: clamp(18px, 2.4vh, 24px) 10px;
+      background: transparent;
+      border: 44px solid transparent;
+      border-inline-width: 24px;
+      border-image-source: url('./blue-silver-assets/parchment-quartz-soft.png');
+      border-image-slice: 448 384 fill;
+      border-image-width: var(--parchment-cap) var(--parchment-edge);
+      border-image-outset: 8px;
+      border-image-repeat: stretch;
+      border-radius: 0;
+      box-shadow: none;
+      filter: drop-shadow(0 4px 6px rgba(80, 57, 68, 0.07));
     }
+    .scroll-paper::before, .scroll-paper::after,
+    .paper-card::before, .interaction-card::before { content: none; }
+    .scroll-paper > *, .paper-card > :not(.papyrus-rolls),
+    .interaction-card > :not(.papyrus-rolls) { position: relative; z-index: 1; }
+    .papyrus-rolls { display: none; }
+
     .person {
       display: block;
       font-family: var(--script);
@@ -609,7 +646,7 @@
     .reception-section { padding-top: calc(var(--section-space) + 28px); }
     .reception-card {
       position: relative;
-      max-width: 520px;
+      max-width: 560px;
       margin-inline: auto;
       border: 1px solid var(--line);
       border-radius: clamp(110px, 20vw, 160px) clamp(110px, 20vw, 160px) var(--block-radius) var(--block-radius);
@@ -678,17 +715,18 @@
     /* Itinerary & Timeline */
     .itinerary-tagline { font-size: 14px; margin-bottom: 20px; color: var(--muted); }
     .timeline { list-style: none; padding: 0; margin: 24px auto 0; max-width: 420px; text-align: left; }
-    .timeline li { display: grid; grid-template-columns: clamp(82px, 20vw, 98px) 1fr; gap: 16px; margin: 18px 0; font-size: clamp(14.5px, 2.5vw, 17px); align-items: baseline; }
+    .timeline li { display: grid; grid-template-columns: clamp(76px, 19vw, 92px) minmax(0, 1fr); gap: 12px; margin: 18px 0; font-size: clamp(14.5px, 2.5vw, 17px); align-items: baseline; }
     .timeline time { font-family: var(--display); font-weight: 600; color: var(--accent); }
-    .timeline span { padding-left: 16px; border-left: 1px solid var(--line); color: var(--ink); line-height: 1.4; }
+    .timeline span { padding-left: 12px; border-left: 1px solid var(--line); color: var(--ink); line-height: 1.4; }
 
     /* Vals card */
     .vals-card {
       margin-top: 28px;
-      padding: clamp(22px, 3.5vw, 30px) clamp(18px, 3vw, 24px);
-      border-radius: 16px;
-      background: var(--primary-soft);
-      border: 1px solid var(--line);
+      padding: clamp(22px, 3.5vw, 30px) 0 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--control-border);
       text-align: center;
     }
     .vals-card .vals-icon { width: 32px; height: 32px; color: var(--accent-soft); margin: 0 auto 10px; }
@@ -767,15 +805,6 @@
     .form-status { font-size: 13px; color: var(--accent); margin-top: 12px; min-height: 1.4em; text-align: center; }
 
     /* Interactive guest features: playlist & guestbook */
-    .interaction-card {
-      max-width: 520px;
-      margin: 28px auto 0;
-      padding: clamp(26px, 4vh, 36px) clamp(20px, 3.5vw, 30px);
-      background: #fffafbe8;
-      border: 1px solid var(--line);
-      border-radius: var(--block-radius);
-      box-shadow: var(--shadow-card);
-    }
     .interaction-card h3 {
       font-family: var(--script);
       font-size: clamp(32px, 5.5vw, 42px);
@@ -827,7 +856,6 @@
       padding-top: clamp(28px, 4.5vh, 36px);
       padding-bottom: clamp(32px, 5vh, 42px);
     }
-    .rsvp-section h2 { font-size: clamp(34px, 5.5vw, 44px); }
     .rsvp-section .quartz-button { margin-top: 24px; }
     .rsvp-message { font-size: 14.5px; }
 
@@ -836,7 +864,7 @@
       min-height: clamp(520px, 75vh, 660px);
       background: var(--primary-soft);
       isolation: isolate;
-      padding: clamp(48px, 7vh, 64px) var(--container-pad-x) 22px;
+      padding: clamp(48px, 7vh, 64px) var(--container-pad-x) calc(144px + env(safe-area-inset-bottom));
       text-align: center;
     }
     .closing::before {
@@ -883,7 +911,7 @@
       position: fixed;
       z-index: 10;
       right: max(16px, calc((100vw - var(--container-max-w)) / 2 + 16px));
-      bottom: clamp(16px, 3vh, 26px);
+      bottom: max(clamp(16px, 3vh, 26px), env(safe-area-inset-bottom));
       width: 48px;
       height: 48px;
       display: grid;
@@ -898,6 +926,16 @@
     }
     .sound-dock:hover { transform: scale(1.08); box-shadow: 0 6px 18px #70495730; }
     .sound-dock .icon { width: 20px; height: 20px; }
+    .fullscreen-toggle { bottom: calc(max(clamp(16px, 3vh, 26px), env(safe-area-inset-bottom)) + 60px); }
+    .share-panel { position: relative; max-width: 430px; margin: 28px auto 0; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: #fffafbf2; text-align: left; }
+    .share-panel img { width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 8px; }
+    .share-panel h3 { margin: 14px 0 6px; font: 600 23px/1.25 var(--display); color: var(--accent); }
+    .share-panel p { font-size: 13px; line-height: 1.6; }
+    .share-actions { display: grid; gap: 10px; margin-top: 16px; }
+    .share-actions .quartz-button { width: 100%; margin: 0; }
+    .share-panel .form-status { margin-top: 12px; }
+    html:fullscreen { overflow-y: auto; background: var(--paper); }
+    @media (pointer: coarse) { html:fullscreen { --container-max-w: 100vw; } }
 
     dialog {
       width: min(460px, calc(100% - 32px));
@@ -951,7 +989,7 @@
     input:focus, select:focus, .interaction-card textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(247, 202, 201, 0.55);
+      box-shadow: 0 0 0 3px rgba(240, 202, 201, 0.55);
     }
     .form-submit { width: 100%; margin-top: 25px; }
     .response-preview {
@@ -1040,7 +1078,7 @@
       .person { font-size: 26px; }
       .name-plaque .person { font-size: 34px; }
       .reception-card { padding-inline: 16px; border-radius: 90px 90px var(--block-radius) var(--block-radius); }
-      .rsvp-section h2 { font-size: 32px; }
+      .section h2 { font-size: 27px; border-inline-width: 38px; border-image-width: 28px 46px; }
       .timeline li { grid-template-columns: 1fr; gap: 4px; margin: 14px 0; }
       .timeline span { padding-left: 0; border-left: 0; }
       .gallery { grid-template-columns: 1fr; }
@@ -1060,7 +1098,7 @@
     {
       "name": "Estefany Brigith",
       "parents": ["Diana Esther Bedoya Zarate", "Jorge Luis Grabiel La Rosa"],
-      "godparents": ["Juan Meneses Rivas", "María Rojas Casas"],
+      "godparents": ["Alberto Mérida La Rosa", "Jhosseline Fernández Paucar"],
       "date": "2026-11-28T19:00:00-05:00",
       "endDate": "2026-11-29T02:00:00-05:00",
       "timezone": "America/Lima",
@@ -1072,6 +1110,31 @@
       "yapeHolder": "Matias Grabiel",
       "whatsappNumber": "51902816211",
       "sampleData": false,
+      "presentation": { "fullscreenOnMobile": true },
+      "share": {
+        "url": "",
+        "title": "Mis XV Años · Estefany Brigith",
+        "description": "Te invito a una noche de magia y recuerdos para celebrar mis quince años. 28 de noviembre de 2026 · Lima.",
+        "image": "./blue-silver-assets/share-cover.jpg",
+        "imageAlt": "Invitación de quince años de Estefany Brigith, en rosa cuarzo y plata"
+      },
+      "music": {
+        "opening": {
+          "src": "./blue-silver-assets/opening-melody.wav",
+          "autoplay": true,
+          "title": "Una noche de magia",
+          "artist": "Melodía original",
+          "volume": 0.35,
+          "loop": true
+        },
+        "invitation": {
+          "src": "./blue-silver-assets/melody.m4a",
+          "title": "",
+          "artist": "",
+          "volume": 0.7,
+          "loop": true
+        }
+      },
       "gallery": [
         {
           "src": "./blue-silver-assets/woman-magic-poster.jpg",
@@ -1093,6 +1156,10 @@
 
   <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <defs>
+      <filter id="papyrus-edge" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
       <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 1 15 9 23 12 15 15 12 23 9 15 1 12 9 9Z" fill="currentColor"/></symbol>
       <symbol id="snowflake" viewBox="0 0 24 24"><path d="M12 2v20M3.34 7l17.32 10M3.34 17 20.66 7M9 4l3 3 3-3M9 20l3-3 3 3M3.7 10.5l4.1-1.1-1.1-4.1M17.3 18.7l-1.1-4.1 4.1-1.1M3.7 13.5l4.1 1.1-1.1 4.1M17.3 5.3l-1.1 4.1 4.1 1.1"/></symbol>
       <symbol id="heart" viewBox="0 0 24 24"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.5a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
@@ -1109,6 +1176,9 @@
       <symbol id="mute" viewBox="0 0 24 24"><path d="M11 4 6 8H3v8h3l5 4V4Zm5 5 6 6M22 9l-6 6"/></symbol>
       <symbol id="copy" viewBox="0 0 24 24"><rect width="13" height="13" x="9" y="9" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
       <symbol id="music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></symbol>
+      <symbol id="expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol>
+      <symbol id="collapse" viewBox="0 0 24 24"><path d="M3 8h5V3M21 8h-5V3M8 21v-5H3M16 21v-5h5"/></symbol>
+      <symbol id="share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></symbol>
     </defs>
   </svg>
 
@@ -1129,6 +1199,8 @@
       <h1 class="cover-name" data-name>Estefany Brigith</h1>
       <div class="cover-divider" aria-hidden="true"><svg class="icon"><use href="#snowflake"/></svg></div>
       <p class="opening-hint">Toca el sobre para abrir</p>
+      <button class="opening-music-toggle" id="opening-music-toggle" type="button" aria-label="Escuchar melodía de apertura" aria-pressed="false" hidden><svg class="icon" aria-hidden="true"><use href="#mute"/></svg><span>Escuchar melodía</span></button>
+      <p class="opening-music-status" id="opening-music-status" role="status" hidden></p>
       <noscript><p>Activa JavaScript para abrir la invitación.</p></noscript>
     </div>
   </section>
@@ -1145,7 +1217,7 @@
 
     <section class="section intro" id="welcome" aria-label="Mi invitación">
       <div class="scroll-paper reveal-on-scroll">
-        <p class="music-label">Toca el corazón y acompáñame con esta melodía.</p>
+        <p class="music-label" id="music-label">Toca el corazón y acompáñame con esta melodía.</p>
         <div class="music-player">
           <span class="music-line" aria-hidden="true"></span>
           <button class="music-toggle" id="music-toggle" aria-label="Reproducir música" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#heart"/></svg></button>
@@ -1162,6 +1234,7 @@
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <h2 id="parents-heading" class="reveal-on-scroll">Mis Padres</h2>
       <div class="paper-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <span class="person" id="parent-one">Diana Esther Bedoya Zarate</span><span class="and">y</span><span class="person" id="parent-two">Jorge Luis Grabiel La Rosa</span>
         <p class="family-caption">Tienen el honor de invitarte a celebrar los quince años de su hija.</p>
       </div>
@@ -1173,6 +1246,7 @@
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <h2 id="godparents-heading" class="reveal-on-scroll">Mis Padrinos</h2>
       <div class="paper-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <span class="person" id="godparent-one">Juan Meneses Rivas</span><span class="and">y</span><span class="person" id="godparent-two">María Rojas Casas</span>
         <p class="family-caption">Quienes con su cariño y guía me acompañan en este día tan especial.</p>
       </div>
@@ -1221,6 +1295,7 @@
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <h2 id="itinerary-heading" class="reveal-on-scroll">Itinerario</h2>
       <div class="paper-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <p class="itinerary-tagline">Una noche mágica diseñada para recordar siempre.</p>
         <ol class="timeline" aria-label="Itinerario de la celebración">
           <li><time>7:00 p. m.</time><span>Recepción y bienvenida de invitados</span></li>
@@ -1241,6 +1316,7 @@
     <section class="section gallery-section" id="gallery" aria-labelledby="gallery-heading">
       <h2 id="gallery-heading" class="reveal-on-scroll">Recuerdos que Brillan</h2>
       <div class="paper-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <p class="gallery-tagline">Momentos especiales en este camino hacia mis quince años.</p>
         <div class="gallery" id="memories-gallery"></div>
       </div>
@@ -1260,6 +1336,7 @@
     <section class="section" aria-labelledby="gifts-heading">
       <h2 id="gifts-heading" class="reveal-on-scroll">Mesa de Regalos</h2>
       <div class="paper-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <svg class="icon gift-icon" aria-hidden="true"><use href="#envelopes"/></svg>
         <p class="gift-message">Tu presencia es mi mejor regalo.<br>Si deseas tener un detalle adicional, una lluvia de sobres o una transferencia digital será recibida con mucho cariño.</p>
         <details class="gift-details">
@@ -1283,6 +1360,7 @@
       <h2 id="interactions-heading" class="reveal-on-scroll">Canciones &amp; Deseos</h2>
 
       <div class="interaction-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <h3>La música de esta noche</h3>
         <p>¿Qué canción no puede faltar en la fiesta? ¡Ayúdame a armar la playlist!</p>
         <form id="song-form">
@@ -1298,6 +1376,7 @@
       </div>
 
       <div class="interaction-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <h3>Un mensaje para mí</h3>
         <p>Tus palabras y bendiciones serán parte de este recuerdo inolvidable.</p>
         <form id="guestbook-form">
@@ -1322,6 +1401,7 @@
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <h2 id="rsvp-heading" class="reveal-on-scroll">Confirma tu Asistencia</h2>
       <div class="paper-card reveal-on-scroll">
+        <span class="papyrus-rolls" aria-hidden="true"></span>
         <svg class="icon gift-icon" aria-hidden="true"><use href="#guest"/></svg>
         <p class="rsvp-message">Me encantará compartir esta noche contigo. Confirma tu asistencia por WhatsApp.</p>
         <button class="quartz-button" id="rsvp-open">Confirmar asistencia</button>
@@ -1331,12 +1411,24 @@
     <footer class="closing">
       <h2>¡Te esperamos!</h2>
       <p class="closing-name" data-name>Estefany Brigith</p>
+      <div class="share-panel" aria-labelledby="share-title">
+        <img id="share-preview-image" src="./blue-silver-assets/share-cover.jpg" alt="Invitación de quince años de Estefany Brigith, en rosa cuarzo y plata" width="1200" height="630" loading="lazy">
+        <h3 id="share-title">Mis XV Años · Estefany Brigith</h3>
+        <p id="share-description">Te invito a una noche de magia y recuerdos para celebrar mis quince años.</p>
+        <div class="share-actions">
+          <a class="quartz-button" id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#share"/></svg>Compartir por WhatsApp</a>
+          <button class="quartz-button is-secondary" id="copy-invitation-link" type="button"><svg class="icon" aria-hidden="true"><use href="#copy"/></svg>Copiar enlace</button>
+        </div>
+        <p class="form-status" id="share-status" role="status" hidden></p>
+      </div>
       <p class="preview-note" id="sample-note" hidden>Vista previa · nombres, fecha y lugar de ejemplo</p>
     </footer>
   </main>
 
-  <audio id="melody" src="./blue-silver-assets/melody.m4a" preload="none" loop></audio>
+  <audio id="opening-melody" preload="auto" autoplay></audio>
+  <audio id="melody" preload="none"></audio>
   <button class="sound-dock" id="sound-dock" aria-label="Reproducir música" aria-pressed="false" hidden><svg class="icon" aria-hidden="true"><use href="#mute"/></svg></button>
+  <button class="sound-dock fullscreen-toggle" id="fullscreen-toggle" type="button" aria-label="Activar pantalla completa" aria-pressed="false" hidden><svg class="icon" aria-hidden="true"><use href="#expand"/></svg></button>
 
   <dialog id="rsvp-dialog" aria-labelledby="dialog-heading">
     <button class="dialog-close" id="rsvp-close" aria-label="Cerrar confirmación"><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button>
@@ -1365,6 +1457,9 @@
       const openButton = document.getElementById('open-invitation');
       const video = document.getElementById('magic-video');
       const audio = document.getElementById('melody');
+      const openingAudio = document.getElementById('opening-melody');
+      const openingMusicButton = document.getElementById('opening-music-toggle');
+      const openingMusicStatus = document.getElementById('opening-music-status');
       const musicButtons = [document.getElementById('music-toggle'), document.getElementById('sound-dock')];
       const soundDock = document.getElementById('sound-dock');
       const musicStatus = document.getElementById('music-status');
@@ -1377,7 +1472,129 @@
       const endDate = data.endDate ? new Date(data.endDate) : new Date(eventDate.getTime() + 6 * 3600 * 1000);
       const dateOptions = { timeZone: data.timezone };
       let opened = false;
-      let visibilityPausedAudio = false;
+      let visibilityPausedAudio = null;
+      let openingAutoplayPending = false;
+
+      // Both phases use independent JSON-configured tracks and share one active phase.
+      const musicConfig = data.music || {};
+      function configureTrack(track, config) {
+        const src = typeof config?.src === 'string' ? config.src.trim() : '';
+        track.autoplay = track === openingAudio && Boolean(src) && config?.autoplay !== false;
+        if (src) track.src = src;
+        track.loop = config?.loop !== false;
+        const volume = Number(config?.volume ?? 0.6);
+        track.volume = Number.isFinite(volume) ? Math.min(1, Math.max(0, volume)) : 0.6;
+        return Boolean(src);
+      }
+      function trackCaption(config) {
+        return [config?.title, config?.artist].filter(value => typeof value === 'string' && value.trim()).join(' · ');
+      }
+      const hasOpeningMusic = configureTrack(openingAudio, musicConfig.opening);
+      const hasInvitationMusic = configureTrack(audio, musicConfig.invitation ?? {
+        src: './blue-silver-assets/melody.m4a', volume: 0.7, loop: true
+      });
+      openingMusicButton.hidden = !hasOpeningMusic;
+      openingMusicButton.title = trackCaption(musicConfig.opening);
+      document.getElementById('music-toggle').hidden = !hasInvitationMusic;
+      const invitationSong = trackCaption(musicConfig.invitation);
+      if (invitationSong) document.getElementById('music-label').textContent = `${invitationSong}. Toca el corazón para pausar o continuar.`;
+
+      function activeTrack() { return opened ? audio : openingAudio; }
+      async function playTrack(track) {
+        if (document.hidden || track !== activeTrack() || !track.getAttribute('src')) return;
+        try {
+          await track.play();
+          if (track === openingAudio) openingAutoplayPending = false;
+        } catch (error) {
+          if (track !== activeTrack() || error.name === 'AbortError') return;
+          if (track === openingAudio) {
+            openingAutoplayPending = error.name === 'NotAllowedError' && openingAudio.autoplay;
+            if (error.name !== 'NotAllowedError') {
+              openingMusicStatus.hidden = false;
+              openingMusicStatus.textContent = 'La melodía de apertura no está disponible. Puedes abrir el sobre.';
+            }
+          } else {
+            musicStatus.hidden = false;
+            musicStatus.textContent = 'No se pudo reproducir la canción. Toca el corazón para volver a intentarlo.';
+          }
+        }
+      }
+
+      // Request fullscreen from the envelope gesture; never gate audio or opening on it.
+      const mobileScreen = window.matchMedia('(max-width: 1024px) and (pointer: coarse)');
+      const fullscreenButton = document.getElementById('fullscreen-toggle');
+      const fullscreenRoot = document.documentElement;
+      function fullscreenElement() { return document.fullscreenElement || document.webkitFullscreenElement; }
+      function supportsFullscreen() {
+        return Boolean(fullscreenRoot.requestFullscreen || fullscreenRoot.webkitRequestFullscreen) && document.fullscreenEnabled !== false;
+      }
+      function updateFullscreenState() {
+        const active = Boolean(fullscreenElement());
+        fullscreenButton.hidden = !opened || !mobileScreen.matches || !supportsFullscreen();
+        fullscreenButton.setAttribute('aria-pressed', String(active));
+        fullscreenButton.setAttribute('aria-label', active ? 'Salir de pantalla completa' : 'Activar pantalla completa');
+        fullscreenButton.querySelector('use').setAttribute('href', active ? '#collapse' : '#expand');
+      }
+      async function enterFullscreen() {
+        if (!supportsFullscreen() || fullscreenElement()) return;
+        try {
+          if (fullscreenRoot.requestFullscreen) await fullscreenRoot.requestFullscreen({ navigationUI: 'hide' });
+          else await fullscreenRoot.webkitRequestFullscreen();
+        } catch { /* The invitation remains usable when the browser declines fullscreen. */ }
+        updateFullscreenState();
+      }
+      fullscreenButton.addEventListener('click', async () => {
+        if (fullscreenElement()) {
+          try {
+            if (document.exitFullscreen) await document.exitFullscreen();
+            else await document.webkitExitFullscreen();
+          } catch { /* Browser controls can also exit fullscreen. */ }
+        } else await enterFullscreen();
+        updateFullscreenState();
+      });
+      document.addEventListener('fullscreenchange', updateFullscreenState);
+      document.addEventListener('webkitfullscreenchange', updateFullscreenState);
+      mobileScreen.addEventListener('change', updateFullscreenState);
+
+      const shareConfig = data.share || {};
+      const shareTitle = shareConfig.title || `Mis XV Años · ${data.name}`;
+      const shareDescription = shareConfig.description || 'Una noche de magia y recuerdos para compartir contigo.';
+      const shareStatus = document.getElementById('share-status');
+      const shareLink = document.getElementById('share-whatsapp');
+      function publicShareUrl() {
+        try {
+          const url = new URL(shareConfig.url || window.location.href);
+          if (!['https:', 'http:'].includes(url.protocol) || /^(localhost|127\..*|0\.0\.0\.0|\[::1\])$/i.test(url.hostname)) return '';
+          url.hash = '';
+          return url.href;
+        } catch { return ''; }
+      }
+      const shareUrl = publicShareUrl();
+      const shareMessage = `${shareTitle}\n${shareDescription}\n${shareUrl}`;
+      document.getElementById('share-title').textContent = shareTitle;
+      document.getElementById('share-description').textContent = shareDescription;
+      const shareImage = document.getElementById('share-preview-image');
+      shareImage.src = shareConfig.image || './blue-silver-assets/share-cover.jpg';
+      shareImage.alt = shareConfig.imageAlt || shareTitle;
+      if (shareUrl) shareLink.href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+      shareLink.addEventListener('click', event => {
+        if (!shareUrl) {
+          event.preventDefault();
+          shareStatus.hidden = false;
+          shareStatus.textContent = 'El enlace para compartir estará disponible cuando se publique la invitación.';
+        }
+      });
+      document.getElementById('copy-invitation-link').addEventListener('click', async () => {
+        shareStatus.hidden = false;
+        if (!shareUrl) {
+          shareStatus.textContent = 'El enlace para compartir estará disponible cuando se publique la invitación.';
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          shareStatus.textContent = 'Enlace copiado. Ya puedes compartir la invitación.';
+        } catch { shareStatus.textContent = `Comparte este enlace: ${shareUrl}`; }
+      });
 
       // Normaliza números de Perú (9 dígitos -> antepone 51) para wa.me
       function formatWhatsAppPhone(raw) {
@@ -1527,13 +1744,20 @@
       openButton.addEventListener('click', () => {
         if (opened) return;
         opened = true;
+        visibilityPausedAudio = null;
+        openingAudio.pause();
+        openingAudio.currentTime = 0;
+        openingMusicButton.hidden = true;
+        openingMusicStatus.hidden = true;
         openButton.disabled = true;
         openButton.setAttribute('aria-expanded', 'true');
         invitation.hidden = false;
         invitation.inert = false;
-        soundDock.hidden = false;
+        soundDock.hidden = !hasInvitationMusic;
         playVideo();
-        audio.play().then(updateMusicState).catch(() => {});
+        playTrack(audio);
+        updateFullscreenState();
+        if (mobileScreen.matches && data.presentation?.fullscreenOnMobile !== false) enterFullscreen();
         if (motionPreference.matches) {
           revealInvitation();
         } else {
@@ -1552,33 +1776,59 @@
         soundDock.querySelector('use').setAttribute('href', playing ? '#sound' : '#mute');
       }
       async function toggleMusic() {
+        if (!opened) return;
         musicStatus.hidden = true;
         if (!audio.paused) { audio.pause(); return; }
-        try { await audio.play(); } catch {
-          musicStatus.hidden = false;
-          musicStatus.textContent = 'No se pudo reproducir la música. Toca el corazón para volver a intentarlo.';
-        }
+        await playTrack(audio);
       }
       musicButtons.forEach(button => button.addEventListener('click', toggleMusic));
       ['play', 'pause', 'ended'].forEach(event => audio.addEventListener(event, updateMusicState));
+      audio.addEventListener('play', () => { if (!opened || document.hidden) audio.pause(); });
       audio.addEventListener('error', () => {
+        if (!opened) return;
         musicStatus.hidden = false;
-        musicStatus.textContent = 'La música no está disponible en este momento.';
+        musicStatus.textContent = 'La canción no está disponible en este momento.';
         updateMusicState();
       });
+      function updateOpeningMusicState() {
+        const playing = !openingAudio.paused && !openingAudio.ended;
+        openingMusicButton.setAttribute('aria-pressed', String(playing));
+        openingMusicButton.setAttribute('aria-label', playing ? 'Pausar melodía de apertura' : 'Escuchar melodía de apertura');
+        openingMusicButton.querySelector('span').textContent = playing ? 'Pausar melodía' : 'Escuchar melodía';
+        openingMusicButton.querySelector('use').setAttribute('href', playing ? '#sound' : '#mute');
+      }
+      ['play', 'pause', 'ended'].forEach(event => openingAudio.addEventListener(event, updateOpeningMusicState));
+      openingAudio.addEventListener('play', () => { if (opened || document.hidden) openingAudio.pause(); });
+      openingAudio.addEventListener('error', () => {
+        if (opened) return;
+        openingMusicStatus.hidden = false;
+        openingMusicStatus.textContent = 'La melodía de apertura no está disponible. Puedes abrir el sobre.';
+      });
+      openingMusicButton.addEventListener('click', () => {
+        if (opened) return;
+        openingAutoplayPending = false;
+        openingMusicStatus.hidden = true;
+        if (!openingAudio.paused) openingAudio.pause();
+        else playTrack(openingAudio);
+      });
+      cover.addEventListener('pointerdown', event => {
+        if (!opened && openingAutoplayPending && !event.target.closest('button, a, input')) playTrack(openingAudio);
+      }, { passive: true });
+      if (openingAudio.autoplay) playTrack(openingAudio);
       motionPreference.addEventListener('change', () => {
         if (motionPreference.matches) video.pause();
         else playVideo();
       });
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          visibilityPausedAudio = !audio.paused;
+          visibilityPausedAudio = activeTrack().paused ? null : activeTrack();
+          openingAudio.pause();
           audio.pause();
           video.pause();
         } else {
           playVideo();
-          if (visibilityPausedAudio) audio.play().catch(() => {});
-          visibilityPausedAudio = false;
+          if (visibilityPausedAudio === activeTrack()) playTrack(visibilityPausedAudio);
+          visibilityPausedAudio = null;
         }
       });
 
@@ -1728,7 +1978,7 @@
         });
       }
 
-      window.addEventListener('pagehide', () => { audio.pause(); video.pause(); });
+      window.addEventListener('pagehide', () => { visibilityPausedAudio = null; openingAudio.pause(); audio.pause(); video.pause(); });
       window.addEventListener('beforeunload', () => window.clearInterval(countdownInterval));
     })();
   </script>
