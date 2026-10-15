@@ -4,8 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7cac9">
-  <meta name="description" content="Una invitación de quince años en rosa cuarzo, plata y un poco de magia.">
-  <title>Mis XV Años · Antonella Luana</title>
+  <meta name="description" content="Acompáñame a celebrar una noche mágica en mis XV Años · Estefany Brigith.">
+
+  <!-- Open Graph para compartir en WhatsApp / Redes Sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mis XV Años · Estefany Brigith">
+  <meta property="og:description" content="Con la bendición de Dios y el amor de mi familia, te invito a celebrar mis quince años.">
+  <meta property="og:image" content="./blue-silver-assets/woman-magic-poster.jpg">
+
+  <title>Mis XV Años · Estefany Brigith</title>
   <link rel="stylesheet" href="./blue-silver-assets/fonts.css">
   <link rel="preload" href="./blue-silver-assets/envelope.webp" as="image">
   <link rel="preload" href="./blue-silver-assets/roses.webp" as="image">
@@ -87,6 +94,17 @@
     h1, h2, h3, p { margin: 0; }
     .svg-library { position: absolute; width: 0; height: 0; overflow: hidden; }
     .icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+    /* Scroll reveal animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .75s cubic-bezier(0.22, 1, 0.36, 1), transform .75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .invitation {
       position: relative;
@@ -233,6 +251,11 @@
       color: var(--ink);
       font-size: clamp(13px, 1.8svh, 15px);
       text-align: center;
+      animation: pulse-hint 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse-hint {
+      0%, 100% { opacity: .65; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-2px); }
     }
     .cover-divider {
       display: flex;
@@ -576,6 +599,7 @@
       font-weight: 600;
     }
     .countdown-message { font-size: 13px; margin-top: 14px !important; }
+    .calendar-actions { margin-top: 24px; }
 
     .reception-section { padding-top: calc(var(--section-space) + 28px); }
     .reception-card {
@@ -629,6 +653,14 @@
     }
     .quartz-button:hover { transform: translateY(-2px); box-shadow: 0 7px 13px #70495725; }
     .quartz-button .icon { width: 18px; height: 18px; }
+    .quartz-button.is-secondary {
+      background: var(--paper);
+      color: var(--accent);
+      margin-top: 10px;
+      font-size: 13px;
+      min-height: 42px;
+      padding: 8px 16px;
+    }
     .reception-card .quartz-button { margin-top: 24px; }
 
     .dress-icons { display: flex; justify-content: center; gap: 18px; margin: 4px auto 20px; }
@@ -649,7 +681,7 @@
     .vals-card {
       margin-top: 28px;
       padding: clamp(22px, 3.5vw, 30px) clamp(18px, 3vw, 24px);
-      border-radius: 12px;
+      border-radius: 16px;
       background: var(--primary-soft);
       border: 1px solid var(--line);
       text-align: center;
@@ -670,9 +702,10 @@
       border-radius: clamp(90px, 16vw, 130px) clamp(90px, 16vw, 130px) 6px 6px;
       background: linear-gradient(155deg, var(--primary-soft), var(--surface-alt));
       border: 1px solid var(--line);
-      box-shadow: 0 8px 20px #70495710;
+      box-shadow: var(--shadow-card);
     }
-    .gallery-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .gallery-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gallery-picture:hover .gallery-image { transform: scale(1.04); }
     .gallery-image.is-fantasy { filter: var(--art-tint); }
     .gallery-image-error { position: absolute; inset: 0; display: grid; place-items: center; padding: 18px; font-size: 13px !important; color: var(--muted); }
     .gallery figcaption { font-family: var(--display); font-size: clamp(14px, 2.5vw, 16px); font-weight: 600; margin-top: 10px; color: var(--ink); overflow-wrap: anywhere; }
@@ -696,7 +729,7 @@
     .gift-details summary:hover { color: var(--primary-deep); }
     .gift-account {
       border: 1px solid var(--control-border);
-      border-radius: 8px;
+      border-radius: 16px;
       padding: clamp(18px, 3vw, 24px);
       margin-top: 16px;
       background: var(--paper);
@@ -725,7 +758,7 @@
       margin: 4px 0;
     }
     .account-holder { display: block; font-size: 14px; color: var(--ink); margin-bottom: 16px; }
-    .form-status { font-size: 13px; color: var(--accent); margin-top: 10px; min-height: 1.4em; }
+    .form-status { font-size: 13px; color: var(--accent); margin-top: 12px; min-height: 1.4em; text-align: center; }
 
     /* Interactive guest features: playlist & guestbook */
     .interaction-card {
@@ -753,8 +786,8 @@
       padding: 10px 12px;
       margin-top: 7px;
       border: 1px solid var(--control-border);
-      border-radius: 4px;
-      background: #fff;
+      border-radius: 10px;
+      background: var(--paper);
       color: var(--ink);
       caret-color: var(--accent);
       font-family: var(--body);
@@ -762,6 +795,27 @@
       resize: vertical;
     }
     .interaction-card .quartz-button { width: 100%; margin-top: 18px; }
+
+    /* Saved items list in guestbook / songs */
+    .saved-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      border-top: 1px dashed var(--line);
+      padding-top: 14px;
+      text-align: left;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .saved-list li {
+      font-size: 13.5px;
+      padding: 8px 12px;
+      background: var(--primary-soft);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      border: 1px solid var(--line);
+    }
+    .saved-list strong { color: var(--primary-deep); font-family: var(--display); font-size: 15px; }
 
     .rsvp-section .paper-card {
       padding-top: clamp(28px, 4.5vh, 36px);
@@ -794,6 +848,7 @@
       font-size: clamp(40px, 7vw, 54px);
       line-height: 1.25;
       color: var(--accent);
+      text-shadow: 0 1px 12px var(--paper);
     }
     .closing-name {
       position: relative;
@@ -802,6 +857,7 @@
       font-size: clamp(27px, 4.5vw, 34px);
       line-height: 1.3;
       color: var(--ink);
+      text-shadow: 0 1px 12px var(--paper);
     }
     .preview-note {
       position: absolute;
@@ -881,8 +937,8 @@
       padding: 10px 12px;
       margin-top: 7px;
       border: 1px solid var(--control-border);
-      border-radius: 4px;
-      background: #fff;
+      border-radius: 10px;
+      background: var(--paper);
       color: var(--ink);
       caret-color: var(--accent);
     }
@@ -892,11 +948,10 @@
       background: var(--surface-alt);
       padding: 18px;
       margin: 18px 0;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 14px;
     }
     .small-note { font-size: 12px !important; color: var(--muted); margin-top: 15px; }
-
 
     /* Shared rose-quartz rhythm and quiet fairytale ornaments. */
     .section:not(.intro)::before {
@@ -938,10 +993,6 @@
     }
     .hero-title { text-shadow: 0 1px 14px #fffafbb3; }
     .name-plaque { box-shadow: var(--shadow-card); }
-    .gift-account, .vals-card { border-radius: 16px; }
-    .gallery-picture { box-shadow: var(--shadow-card); }
-    .closing h2, .closing-name { text-shadow: 0 1px 12px var(--paper); }
-    input, select, .interaction-card textarea { border-radius: 10px; background: var(--paper); }
 
     /* Media query: Short viewports & Mobile landscape */
     @media (max-height: 540px) {
@@ -960,7 +1011,7 @@
       .cover .roses.bottom { width: 130px; bottom: -35px; right: -30px; }
     }
 
-    /* Media query: Extra narrow mobile (< 360px, e.g. Galaxy Fold / iPhone SE) */
+    /* Media query: Extra narrow mobile (< 360px) */
     @media (max-width: 360px) {
       .cover-inner { padding-inline: 16px; }
       .occasion .mis { font-size: 32px; margin-right: 36px; }
@@ -988,20 +1039,19 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .snow-layer { display: none; }
+      .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
 <body class="sealed">
-  <!-- Standalone visual preview. Edit this single data block before sharing. -->
-  <!-- Gallery: edit src, alt, caption and position in gallery below.
-       Image paths are relative to this HTML file. Add or remove entries as needed.
-       Use fantasyTint: true for themed illustrations, false for original photo colors. -->
+  <!-- Bloque de datos principal: edita aquí cualquier información del evento -->
   <script type="application/json" id="invitation-data">
     {
       "name": "Estefany Brigith",
       "parents": ["Diana Esther Bedoya Zarate", "Jorge Luis Grabiel La Rosa"],
       "godparents": ["Juan Meneses Rivas", "María Rojas Casas"],
       "date": "2026-11-28T19:00:00-05:00",
+      "endDate": "2026-11-29T02:00:00-05:00",
       "timezone": "America/Lima",
       "venue": "Local Los Delfines Eventos y Recepciones",
       "address": "Lima, Perú",
@@ -1009,8 +1059,8 @@
       "mapUrl": "https://maps.app.goo.gl/DhzEDWbY3hExSCBA8?g_st=aw",
       "yapeNumber": "902 816 211",
       "yapeHolder": "Matias Grabiel",
-      "whatsappNumber": "902816211",
-      "sampleData": true,
+      "whatsappNumber": "51902816211",
+      "sampleData": false,
       "gallery": [
         {
           "src": "./blue-silver-assets/woman-magic-poster.jpg",
@@ -1029,6 +1079,7 @@
       ]
     }
   </script>
+
   <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 1 15 9 23 12 15 15 12 23 9 15 1 12 9 9Z" fill="currentColor"/></symbol>
@@ -1036,6 +1087,7 @@
       <symbol id="heart" viewBox="0 0 24 24"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.5a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
       <symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
       <symbol id="pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></symbol>
       <symbol id="glasses" viewBox="0 0 64 64"><path d="m13 6 17 5-5 18a9 9 0 0 1-17-5L13 6Zm35 0-17 5 5 18a9 9 0 0 0 17-5L48 6ZM11 18l15 4M35 22l15-4M15 32l-5 20M6 51l11 3M45 32l5 20M44 54l11-3M26 3l5 5 5-5"/></symbol>
       <symbol id="suit" viewBox="0 0 64 74"><path d="m19 7 13 7L45 7l9 11-4 45H14L10 18l9-11ZM19 7l2 17 11-10 11 10 2-17M21 24l11 16 11-16M32 14v49M17 46h9M38 46h9"/></symbol>
       <symbol id="dress" viewBox="0 0 64 74"><path d="M23 7h5l4 7 4-7h5l-3 17 16 39H10l16-39-3-17ZM26 24h12M18 47l-4 16M32 34v29M46 47l4 16"/></symbol>
@@ -1057,13 +1109,13 @@
     <svg class="fantasy-glimmer" viewBox="0 0 640 1000" preserveAspectRatio="none" aria-hidden="true"><use href="#sparkle" x="105" y="155" width="18" height="25"/><use href="#sparkle" x="520" y="295" width="13" height="18"/><use href="#sparkle" x="60" y="640" width="14" height="20"/><use href="#sparkle" x="560" y="810" width="21" height="30"/></svg>
     <div class="cover-inner">
       <p class="occasion" aria-label="Mis quince años"><span class="mis">Mis</span><span class="roman">XV</span><span class="years">Años</span></p>
-      <button class="envelope-button" id="open-invitation" aria-label="Abrir la invitación de Antonella Luana" aria-controls="invitation" aria-expanded="false">
+      <button class="envelope-button" id="open-invitation" aria-label="Abrir la invitación de Estefany Brigith" aria-controls="invitation" aria-expanded="false">
         <img class="envelope-image" src="./blue-silver-assets/envelope.webp" alt="Sobre rosa cuarzo con filigrana plateada y sello de corona" width="1536" height="1024">
         <span class="letter" aria-hidden="true">Una noche mágica</span>
         <img class="envelope-front" src="./blue-silver-assets/envelope.webp" alt="" width="1536" height="1024">
         <img class="envelope-flap" src="./blue-silver-assets/envelope.webp" alt="" width="1536" height="1024">
       </button>
-      <h1 class="cover-name" data-name>Antonella Luana</h1>
+      <h1 class="cover-name" data-name>Estefany Brigith</h1>
       <div class="cover-divider" aria-hidden="true"><svg class="icon"><use href="#snowflake"/></svg></div>
       <p class="opening-hint">Toca el sobre para abrir</p>
       <noscript><p>Activa JavaScript para abrir la invitación.</p></noscript>
@@ -1075,13 +1127,13 @@
       <video id="magic-video" muted loop playsinline preload="none" poster="./blue-silver-assets/woman-magic-poster.jpg" aria-label="Una joven frente a un castillo nevado, en tonos de rosa cuarzo">
         <source src="./woman_magic.mp4" type="video/mp4">
       </video>
-    <svg class="fantasy-glimmer" viewBox="0 0 640 1000" preserveAspectRatio="none" aria-hidden="true"><use href="#sparkle" x="105" y="155" width="18" height="25"/><use href="#sparkle" x="520" y="295" width="13" height="18"/><use href="#sparkle" x="60" y="640" width="14" height="20"/><use href="#sparkle" x="560" y="810" width="21" height="30"/></svg>
+      <svg class="fantasy-glimmer" viewBox="0 0 640 1000" preserveAspectRatio="none" aria-hidden="true"><use href="#sparkle" x="105" y="155" width="18" height="25"/><use href="#sparkle" x="520" y="295" width="13" height="18"/><use href="#sparkle" x="60" y="640" width="14" height="20"/><use href="#sparkle" x="560" y="810" width="21" height="30"/></svg>
       <div class="hero-title"><h2>Mis<span class="roman">XV</span><span class="years">Años</span></h2></div>
       <a class="continue-link" href="#welcome" aria-label="Continuar a los detalles"><svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></a>
     </section>
 
     <section class="section intro" id="welcome" aria-label="Mi invitación">
-      <div class="scroll-paper">
+      <div class="scroll-paper reveal-on-scroll">
         <p class="music-label">Toca el corazón y acompáñame con esta melodía.</p>
         <div class="music-player">
           <span class="music-line" aria-hidden="true"></span>
@@ -1097,52 +1149,66 @@
     <section class="section floral-section" aria-labelledby="parents-heading">
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
-      <h2 id="parents-heading">Mis Padres</h2>
-      <div class="paper-card">
-        <span class="person" id="parent-one">Daniel Meza Rivas</span><span class="and">y</span><span class="person" id="parent-two">Luciana García Rojas</span>
+      <h2 id="parents-heading" class="reveal-on-scroll">Mis Padres</h2>
+      <div class="paper-card reveal-on-scroll">
+        <span class="person" id="parent-one">Diana Esther Bedoya Zarate</span><span class="and">y</span><span class="person" id="parent-two">Jorge Luis Grabiel La Rosa</span>
         <p class="family-caption">Tienen el honor de invitarte a celebrar los quince años de su hija.</p>
       </div>
-      <div class="name-plaque"><span class="person" data-name>Antonella Luana</span></div>
+      <div class="name-plaque reveal-on-scroll"><span class="person" data-name>Estefany Brigith</span></div>
     </section>
 
     <section class="section floral-section" aria-labelledby="godparents-heading">
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
-      <h2 id="godparents-heading">Mis Padrinos</h2>
-      <span class="person" id="godparent-one">Juan Meneses Rivas</span><span class="and">y</span><span class="person" id="godparent-two">María Rojas Casas</span>
+      <h2 id="godparents-heading" class="reveal-on-scroll">Mis Padrinos</h2>
+      <div class="reveal-on-scroll">
+        <span class="person" id="godparent-one">Juan Meneses Rivas</span><span class="and">y</span><span class="person" id="godparent-two">María Rojas Casas</span>
+      </div>
     </section>
 
     <section class="section countdown-section" aria-label="Fecha de la celebración">
-      <div class="ornament" aria-hidden="true"><svg class="icon"><use href="#snowflake"/></svg></div>
-      <p class="countdown-heading">Tan solo faltan</p>
-      <div class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para la celebración">
+      <div class="ornament reveal-on-scroll" aria-hidden="true"><svg class="icon"><use href="#snowflake"/></svg></div>
+      <p class="countdown-heading reveal-on-scroll">Tan solo faltan</p>
+      <div class="countdown reveal-on-scroll" id="countdown" role="timer" aria-label="Cuenta regresiva para la celebración">
         <div class="countdown-unit"><span class="countdown-number" id="days">00</span><span>Días</span></div>
         <div class="countdown-unit"><span class="countdown-number" id="hours">00</span><span>Horas</span></div>
         <div class="countdown-unit"><span class="countdown-number" id="minutes">00</span><span>Minutos</span></div>
         <div class="countdown-unit"><span class="countdown-number" id="seconds">00</span><span>Segundos</span></div>
       </div>
       <p class="countdown-message" id="countdown-message" hidden></p>
-      <div class="event-date"><span class="date-month" id="date-month">Noviembre</span><div class="date-row"><span class="date-side" id="date-weekday">Domingo</span><span class="date-day" id="date-day">15</span><span class="date-side" id="date-year">2026</span></div></div>
+      <div class="event-date reveal-on-scroll">
+        <span class="date-month" id="date-month">Noviembre</span>
+        <div class="date-row">
+          <span class="date-side" id="date-weekday">Sábado</span>
+          <span class="date-day" id="date-day">28</span>
+          <span class="date-side" id="date-year">2026</span>
+        </div>
+      </div>
+      <div class="calendar-actions reveal-on-scroll">
+        <a class="quartz-button" id="calendar-link" href="#" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#calendar"/></svg>Agendar en mi calendario
+        </a>
+      </div>
     </section>
 
     <section class="section reception-section" id="reception" aria-labelledby="reception-heading">
-      <div class="reception-card">
+      <div class="reception-card reveal-on-scroll">
         <img class="roses" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
         <img class="roses mirror" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
         <svg class="icon large-icon" aria-hidden="true"><use href="#glasses"/></svg>
         <h2 id="reception-heading">Recepción</h2>
         <p>Horario: <span id="event-time">7:00 p. m.</span></p>
-        <span class="venue-name" id="venue-name">Salón Cristal</span>
+        <span class="venue-name" id="venue-name">Local Los Delfines Eventos y Recepciones</span>
         <p class="venue-address" id="venue-address">Lima, Perú</p>
-        <a class="quartz-button" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Lima%2C%20Per%C3%BA" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
+        <a class="quartz-button" id="map-link" href="https://maps.app.goo.gl/DhzEDWbY3hExSCBA8?g_st=aw" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
       </div>
     </section>
 
     <section class="section floral-section itinerary-section" id="itinerary" aria-labelledby="itinerary-heading">
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
-      <h2 id="itinerary-heading">Itinerario</h2>
-      <div class="paper-card">
+      <h2 id="itinerary-heading" class="reveal-on-scroll">Itinerario</h2>
+      <div class="paper-card reveal-on-scroll">
         <p class="itinerary-tagline">Una noche mágica diseñada para recordar siempre.</p>
         <ol class="timeline" aria-label="Itinerario de la celebración">
           <li><time>7:00 p. m.</time><span>Recepción y bienvenida de invitados</span></li>
@@ -1161,8 +1227,8 @@
     </section>
 
     <section class="section gallery-section" id="gallery" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Recuerdos que Brillan</h2>
-      <div class="paper-card">
+      <h2 id="gallery-heading" class="reveal-on-scroll">Recuerdos que Brillan</h2>
+      <div class="paper-card reveal-on-scroll">
         <p class="gallery-tagline">Momentos especiales en este camino hacia mis quince años.</p>
         <div class="gallery" id="memories-gallery"></div>
       </div>
@@ -1171,15 +1237,17 @@
     <section class="section floral-section" aria-labelledby="dress-heading">
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
-      <h2 id="dress-heading">Código de Vestimenta</h2>
-      <div class="dress-icons" aria-hidden="true"><svg class="icon"><use href="#suit"/></svg><svg class="icon"><use href="#dress"/></svg></div>
-      <p class="dress-title">Vestimenta formal</p>
-      <p class="dress-note">El color rosa está reservado exclusivamente para la quinceañera.<br>¡Dejemos ese toque de magia para ella!</p>
+      <h2 id="dress-heading" class="reveal-on-scroll">Código de Vestimenta</h2>
+      <div class="reveal-on-scroll">
+        <div class="dress-icons" aria-hidden="true"><svg class="icon"><use href="#suit"/></svg><svg class="icon"><use href="#dress"/></svg></div>
+        <p class="dress-title">Vestimenta formal</p>
+        <p class="dress-note">El color rosa está reservado exclusivamente para la quinceañera.<br>¡Dejemos ese toque de magia para ella!</p>
+      </div>
     </section>
 
     <section class="section" aria-labelledby="gifts-heading">
-      <h2 id="gifts-heading">Mesa de Regalos</h2>
-      <div class="paper-card">
+      <h2 id="gifts-heading" class="reveal-on-scroll">Mesa de Regalos</h2>
+      <div class="paper-card reveal-on-scroll">
         <svg class="icon gift-icon" aria-hidden="true"><use href="#envelopes"/></svg>
         <p class="gift-message">Tu presencia es mi mejor regalo.<br>Si deseas tener un detalle adicional, una lluvia de sobres o una transferencia digital será recibida con mucho cariño.</p>
         <details class="gift-details">
@@ -1200,9 +1268,9 @@
     <section class="section floral-section interaction-section" id="interactions" aria-labelledby="interactions-heading">
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
-      <h2 id="interactions-heading">Canciones &amp; Deseos</h2>
+      <h2 id="interactions-heading" class="reveal-on-scroll">Canciones &amp; Deseos</h2>
 
-      <div class="interaction-card">
+      <div class="interaction-card reveal-on-scroll">
         <h3>La música de esta noche</h3>
         <p>¿Qué canción no puede faltar en la fiesta? ¡Ayúdame a armar la playlist!</p>
         <form id="song-form">
@@ -1213,10 +1281,12 @@
             <svg class="icon" aria-hidden="true"><use href="#music"/></svg>Sugerir canción
           </button>
           <p id="song-status" class="form-status" role="status"></p>
+          <a id="song-wa-link" class="quartz-button is-secondary" href="#" target="_blank" rel="noopener noreferrer" hidden>Enviar sugerencia por WhatsApp</a>
         </form>
+        <ul class="saved-list" id="saved-songs-list" hidden aria-label="Canciones sugeridas"></ul>
       </div>
 
-      <div class="interaction-card">
+      <div class="interaction-card reveal-on-scroll">
         <h3>Un mensaje para mí</h3>
         <p>Tus palabras y bendiciones serán parte de este recuerdo inolvidable.</p>
         <form id="guestbook-form">
@@ -1230,15 +1300,17 @@
             <svg class="icon" aria-hidden="true"><use href="#heart"/></svg>Dejar mensaje
           </button>
           <p id="guestbook-status" class="form-status" role="status"></p>
+          <a id="guestbook-wa-link" class="quartz-button is-secondary" href="#" target="_blank" rel="noopener noreferrer" hidden>Enviar mi dedicatoria por WhatsApp</a>
         </form>
+        <ul class="saved-list" id="saved-wishes-list" hidden aria-label="Dedicatorias guardadas"></ul>
       </div>
     </section>
 
     <section class="section floral-section rsvp-section" id="rsvp" aria-labelledby="rsvp-heading">
       <img class="roses left" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
       <img class="roses right" src="./blue-silver-assets/roses.webp" alt="" loading="lazy" width="1254" height="1254">
-      <h2 id="rsvp-heading">Confirma tu Asistencia</h2>
-      <div class="paper-card">
+      <h2 id="rsvp-heading" class="reveal-on-scroll">Confirma tu Asistencia</h2>
+      <div class="paper-card reveal-on-scroll">
         <svg class="icon gift-icon" aria-hidden="true"><use href="#guest"/></svg>
         <p class="rsvp-message">Me encantará compartir esta noche contigo. Confirma tu asistencia por WhatsApp.</p>
         <button class="quartz-button" id="rsvp-open">Confirmar asistencia</button>
@@ -1247,8 +1319,8 @@
 
     <footer class="closing">
       <h2>¡Te esperamos!</h2>
-      <p class="closing-name" data-name>Antonella Luana</p>
-      <p class="preview-note" id="sample-note">Vista previa · nombres, fecha y lugar de ejemplo</p>
+      <p class="closing-name" data-name>Estefany Brigith</p>
+      <p class="preview-note" id="sample-note" hidden>Vista previa · nombres, fecha y lugar de ejemplo</p>
     </footer>
   </main>
 
@@ -1262,7 +1334,7 @@
       <p>Prepara tu respuesta para enviarla por WhatsApp.</p>
       <label class="form-field" for="guest-name">Tu nombre<input id="guest-name" name="name" autocomplete="name" maxlength="100" required></label>
       <label class="form-field" for="attendance">Tu respuesta<select id="attendance" name="attendance"><option value="yes">Sí, asistiré</option><option value="no">No podré asistir</option></select></label>
-      <label class="form-field" for="party-size" id="party-size-field">Personas que asistirán, incluyéndote<select id="party-size" name="partySize"><option value="1">1 persona</option><option value="2">2 personas</option><option value="3">3 personas</option><option value="4">4 personas</option></select></label>
+      <label class="form-field" for="party-size" id="party-size-field">Personas que asistirán, incluyéndote<select id="party-size" name="partySize"><option value="1">1 persona</option><option value="2">2 personas</option><option value="3">3 personas</option><option value="4">4 personas</option><option value="5">5 personas</option></select></label>
       <button class="quartz-button form-submit" type="submit">Preparar mensaje</button>
     </form>
     <div id="rsvp-result" hidden>
@@ -1291,9 +1363,20 @@
       const attendance = document.getElementById('attendance');
       const partySize = document.getElementById('party-size');
       const eventDate = new Date(data.date);
+      const endDate = data.endDate ? new Date(data.endDate) : new Date(eventDate.getTime() + 6 * 3600 * 1000);
       const dateOptions = { timeZone: data.timezone };
       let opened = false;
       let visibilityPausedAudio = false;
+
+      // Normaliza números de Perú (9 dígitos -> antepone 51) para wa.me
+      function formatWhatsAppPhone(raw) {
+        const digits = String(raw || '').replace(/\D/g, '');
+        if (digits.length === 9 && digits.startsWith('9')) {
+          return `51${digits}`;
+        }
+        return digits;
+      }
+      const waPhone = formatWhatsAppPhone(data.whatsappNumber);
 
       document.title = `Mis XV Años · ${data.name}`;
       document.querySelectorAll('[data-name]').forEach(element => { element.textContent = data.name; });
@@ -1305,6 +1388,7 @@
       document.getElementById('venue-name').textContent = data.venue;
       document.getElementById('venue-address').textContent = data.address;
       document.getElementById('map-link').href = data.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.mapQuery)}`;
+
       if (document.getElementById('yape-display-number') && data.yapeNumber) {
         document.getElementById('yape-display-number').textContent = data.yapeNumber;
       }
@@ -1312,6 +1396,21 @@
         document.getElementById('yape-display-holder').textContent = data.yapeHolder;
       }
       document.getElementById('sample-note').hidden = !data.sampleData;
+
+      // Generar enlace para Google Calendar
+      const calendarLink = document.getElementById('calendar-link');
+      if (calendarLink) {
+        const toCalUTC = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+        const calUrl = new URL('https://calendar.google.com/calendar/render');
+        calUrl.searchParams.set('action', 'TEMPLATE');
+        calUrl.searchParams.set('text', `Mis XV Años · ${data.name}`);
+        calUrl.searchParams.set('dates', `${toCalUTC(eventDate)}/${toCalUTC(endDate)}`);
+        calUrl.searchParams.set('details', `Celebración de los XV años de ${data.name}. ¡Te esperamos!`);
+        calUrl.searchParams.set('location', `${data.venue}, ${data.address}`);
+        calendarLink.href = calUrl.toString();
+      }
+
+      // Galería
       const galleryItems = Array.isArray(data.gallery) ? data.gallery : [];
       const gallery = document.getElementById('memories-gallery');
       document.getElementById('gallery').hidden = galleryItems.length === 0;
@@ -1340,6 +1439,7 @@
         figure.append(picture, caption);
         gallery.append(figure);
       });
+
       for (const [id, part] of [['date-month', 'month'], ['date-weekday', 'weekday'], ['date-day', 'day'], ['date-year', 'year']]) {
         const option = part === 'month' || part === 'weekday' ? 'long' : 'numeric';
         document.getElementById(id).textContent = new Intl.DateTimeFormat('es-PE', { ...dateOptions, [part]: option }).format(eventDate);
@@ -1359,6 +1459,7 @@
       updateCountdown();
       const countdownInterval = window.setInterval(updateCountdown, 1000);
 
+      // Partículas de nieve / destellos
       const snow = document.getElementById('invitation-snow');
       for (let index = 0; index < 32; index += 1) {
         const particle = document.createElement('span');
@@ -1380,9 +1481,27 @@
         snow.append(particle);
       }
 
+      // Animación Scroll Reveal
+      function initScrollReveal() {
+        const elements = document.querySelectorAll('.reveal-on-scroll');
+        if (motionPreference.matches || !('IntersectionObserver' in window)) {
+          elements.forEach(el => el.classList.add('is-visible'));
+          return;
+        }
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+        elements.forEach(el => observer.observe(el));
+      }
+
       async function playVideo() {
         if (opened && !motionPreference.matches && !document.hidden) {
-          try { await video.play(); } catch { /* The poster remains visible if playback is unavailable. */ }
+          try { await video.play(); } catch { /* El póster queda visible si el navegador bloquea autoplay */ }
         }
       }
       function revealInvitation() {
@@ -1392,6 +1511,7 @@
         window.scrollTo({ top: 0, behavior: 'instant' });
         const continueLink = document.querySelector('.continue-link');
         continueLink.focus({ preventScroll: true });
+        initScrollReveal();
       }
       openButton.addEventListener('click', () => {
         if (opened) return;
@@ -1451,12 +1571,16 @@
         }
       });
 
+      // Modal RSVP
       document.getElementById('rsvp-open').addEventListener('click', () => {
         result.hidden = true;
         form.hidden = false;
         dialog.showModal();
       });
       document.getElementById('rsvp-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
       attendance.addEventListener('change', () => {
         const attending = attendance.value === 'yes';
         document.getElementById('party-size-field').hidden = !attending;
@@ -1472,18 +1596,18 @@
         }
         const attending = attendance.value === 'yes';
         const people = Number(partySize.value);
-        const response = attending ? `Confirmo mi asistencia${people > 1 ? ` junto con ${people - 1} acompañante${people > 2 ? 's' : ''}` : ''}.` : 'No podré asistir, pero te deseo una noche maravillosa.';
-        const message = `¡Hola! Soy ${name}.\n${response}\nGracias por invitarme a los XV años de ${data.name}.`;
+        const response = attending ? `Confirmo mi asistencia${people > 1 ? ` (${people} personas en total)` : ''}.` : 'No podré asistir, pero te deseo una noche maravillosa.';
+        const message = `¡Hola! Soy ${name}.\n${response}\nGracias por invitarme a los XV años de ${data.name}. ✨`;
         document.getElementById('response-preview').textContent = message;
-        const phone = String(data.whatsappNumber || '').replace(/\D/g, '');
-        document.getElementById('whatsapp-link').href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-        document.getElementById('whatsapp-note').textContent = phone ? 'El mensaje se enviará cuando lo confirmes en WhatsApp.' : 'Al abrir WhatsApp, elige el contacto de la familia y envía tu mensaje.';
+        document.getElementById('whatsapp-link').href = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;
+        document.getElementById('whatsapp-note').textContent = waPhone ? 'El mensaje se enviará cuando lo confirmes en WhatsApp.' : 'Al abrir WhatsApp, elige el contacto de la familia y envía tu mensaje.';
         form.hidden = true;
         result.hidden = false;
         document.getElementById('whatsapp-link').focus();
       });
       document.getElementById('guest-name').addEventListener('input', event => event.target.setCustomValidity(''));
 
+      // Copiar número de Yape
       const copyAccountBtn = document.getElementById('copy-account');
       if (copyAccountBtn) {
         copyAccountBtn.addEventListener('click', async () => {
@@ -1499,33 +1623,98 @@
         });
       }
 
+      // Persistencia local + Envío opcional por WhatsApp para Canciones y Dedicatorias
+      const STORAGE_SONGS_KEY = `xv_songs_${data.name}`;
+      const STORAGE_WISHES_KEY = `xv_wishes_${data.name}`;
+
+      function loadStoredArray(key) {
+        try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch { return []; }
+      }
+      function saveStoredArray(key, arr) {
+        try { localStorage.setItem(key, JSON.stringify(arr)); } catch {}
+      }
+
+      const savedSongsList = document.getElementById('saved-songs-list');
+      function renderSavedSongs() {
+        const songs = loadStoredArray(STORAGE_SONGS_KEY);
+        if (!songs.length || !savedSongsList) return;
+        savedSongsList.hidden = false;
+        savedSongsList.innerHTML = '';
+        songs.forEach(song => {
+          const li = document.createElement('li');
+          li.textContent = `🎵 ${song}`;
+          savedSongsList.append(li);
+        });
+      }
+      renderSavedSongs();
+
       const songForm = document.getElementById('song-form');
       if (songForm) {
         songForm.addEventListener('submit', event => {
           event.preventDefault();
-          const form = event.currentTarget;
-          const song = new FormData(form).get('song')?.toString().trim();
+          const currentForm = event.currentTarget;
+          const song = new FormData(currentForm).get('song')?.toString().trim();
           const status = document.getElementById('song-status');
+          const waLink = document.getElementById('song-wa-link');
           if (!song) return;
-          status.textContent = `¡Gracias! Añadiremos «${song}» a la lista de canciones.`;
-          form.reset();
-          window.setTimeout(() => { status.textContent = ''; }, 5000);
+
+          const songs = loadStoredArray(STORAGE_SONGS_KEY);
+          songs.unshift(song);
+          saveStoredArray(STORAGE_SONGS_KEY, songs.slice(0, 15));
+          renderSavedSongs();
+
+          status.textContent = `¡Gracias! Añadimos «${song}» a tu lista de sugerencias.`;
+          if (waLink && waPhone) {
+            const waText = `¡Hola! Sugiero esta canción para la fiesta de XV años de ${data.name}: 🎵 ${song}`;
+            waLink.href = `https://wa.me/${waPhone}?text=${encodeURIComponent(waText)}`;
+            waLink.hidden = false;
+          }
+          currentForm.reset();
         });
       }
+
+      const savedWishesList = document.getElementById('saved-wishes-list');
+      function renderSavedWishes() {
+        const wishes = loadStoredArray(STORAGE_WISHES_KEY);
+        if (!wishes.length || !savedWishesList) return;
+        savedWishesList.hidden = false;
+        savedWishesList.innerHTML = '';
+        wishes.forEach(item => {
+          const li = document.createElement('li');
+          const author = document.createElement('strong');
+          author.textContent = `${item.name}: `;
+          const text = document.createElement('span');
+          text.textContent = item.message;
+          li.append(author, text);
+          savedWishesList.append(li);
+        });
+      }
+      renderSavedWishes();
 
       const guestbookForm = document.getElementById('guestbook-form');
       if (guestbookForm) {
         guestbookForm.addEventListener('submit', event => {
           event.preventDefault();
-          const form = event.currentTarget;
-          const formData = new FormData(form);
+          const currentForm = event.currentTarget;
+          const formData = new FormData(currentForm);
           const name = formData.get('name')?.toString().trim();
           const message = formData.get('message')?.toString().trim();
           const status = document.getElementById('guestbook-status');
+          const waLink = document.getElementById('guestbook-wa-link');
           if (!name || !message) return;
-          status.textContent = `¡Muchas gracias por tus hermosas palabras, ${name}! Tu dedicatoria fue guardada.`;
-          form.reset();
-          window.setTimeout(() => { status.textContent = ''; }, 5000);
+
+          const wishes = loadStoredArray(STORAGE_WISHES_KEY);
+          wishes.unshift({ name, message });
+          saveStoredArray(STORAGE_WISHES_KEY, wishes.slice(0, 15));
+          renderSavedWishes();
+
+          status.textContent = `¡Muchas gracias por tus hermosas palabras, ${name}!`;
+          if (waLink && waPhone) {
+            const waText = `✨ *Dedicatoria para los XV de ${data.name}*\nDe: ${name}\n\n"${message}"`;
+            waLink.href = `https://wa.me/${waPhone}?text=${encodeURIComponent(waText)}`;
+            waLink.hidden = false;
+          }
+          currentForm.reset();
         });
       }
 
